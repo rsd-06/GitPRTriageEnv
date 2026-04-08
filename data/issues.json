@@ -1,0 +1,542 @@
+[
+  {
+    "id": "issue-1",
+    "title": "Add dark mode to the landing page",
+    "body": "It would be great to have a dark mode toggle.",
+    "code_snippet": null,
+    "labels": [
+      "mobile",
+      "urgent"
+    ],
+    "task_level": "easy",
+    "true_label": "feature",
+    "true_bug_line": null,
+    "true_team": "webdev",
+    "true_fix_keywords": [
+      "click",
+      "event"
+    ]
+  },
+  {
+    "id": "issue-2",
+    "title": "Dark mode is missing",
+    "body": "Duplicate of Add dark mode to the landing page.",
+    "code_snippet": null,
+    "labels": [
+      "mobile",
+      "urgent"
+    ],
+    "task_level": "easy",
+    "true_label": "duplicate",
+    "true_bug_line": null,
+    "true_team": "webdev",
+    "true_fix_keywords": [
+      "click",
+      "event"
+    ]
+  },
+  {
+    "id": "issue-3",
+    "title": "Login button is not working on mobile 3",
+    "body": "When I tap the login button on iOS, nothing happens.",
+    "code_snippet": null,
+    "labels": [
+      "mobile",
+      "urgent"
+    ],
+    "task_level": "easy",
+    "true_label": "bug",
+    "true_bug_line": null,
+    "true_team": "webdev",
+    "true_fix_keywords": [
+      "click",
+      "event"
+    ]
+  },
+  {
+    "id": "issue-4",
+    "title": "Login button is not working on mobile 4",
+    "body": "When I tap the login button on iOS, nothing happens.",
+    "code_snippet": null,
+    "labels": [
+      "mobile",
+      "urgent"
+    ],
+    "task_level": "easy",
+    "true_label": "bug",
+    "true_bug_line": null,
+    "true_team": "webdev",
+    "true_fix_keywords": [
+      "click",
+      "event"
+    ]
+  },
+  {
+    "id": "issue-5",
+    "title": "Login button is not working on mobile 5",
+    "body": "When I tap the login button on iOS, nothing happens.",
+    "code_snippet": null,
+    "labels": [
+      "mobile",
+      "urgent"
+    ],
+    "task_level": "easy",
+    "true_label": "bug",
+    "true_bug_line": null,
+    "true_team": "webdev",
+    "true_fix_keywords": [
+      "click",
+      "event"
+    ]
+  },
+  {
+    "id": "issue-6",
+    "title": "Login button is not working on mobile 6",
+    "body": "When I tap the login button on iOS, nothing happens.",
+    "code_snippet": null,
+    "labels": [
+      "mobile",
+      "urgent"
+    ],
+    "task_level": "easy",
+    "true_label": "bug",
+    "true_bug_line": null,
+    "true_team": "webdev",
+    "true_fix_keywords": [
+      "click",
+      "event"
+    ]
+  },
+  {
+    "id": "issue-7",
+    "title": "Login button is not working on mobile 7",
+    "body": "When I tap the login button on iOS, nothing happens.",
+    "code_snippet": null,
+    "labels": [
+      "mobile",
+      "urgent"
+    ],
+    "task_level": "easy",
+    "true_label": "bug",
+    "true_bug_line": null,
+    "true_team": "webdev",
+    "true_fix_keywords": [
+      "click",
+      "event"
+    ]
+  },
+  {
+    "id": "issue-8",
+    "title": "Login button is not working on mobile 8",
+    "body": "When I tap the login button on iOS, nothing happens.",
+    "code_snippet": null,
+    "labels": [
+      "mobile",
+      "urgent"
+    ],
+    "task_level": "easy",
+    "true_label": "bug",
+    "true_bug_line": null,
+    "true_team": "webdev",
+    "true_fix_keywords": [
+      "click",
+      "event"
+    ]
+  },
+  {
+    "id": "issue-9",
+    "title": "Login button is not working on mobile 9",
+    "body": "When I tap the login button on iOS, nothing happens.",
+    "code_snippet": null,
+    "labels": [
+      "mobile",
+      "urgent"
+    ],
+    "task_level": "easy",
+    "true_label": "bug",
+    "true_bug_line": null,
+    "true_team": "webdev",
+    "true_fix_keywords": [
+      "click",
+      "event"
+    ]
+  },
+  {
+    "id": "issue-10",
+    "title": "Login button is not working on mobile 10",
+    "body": "When I tap the login button on iOS, nothing happens.",
+    "code_snippet": null,
+    "labels": [
+      "mobile",
+      "urgent"
+    ],
+    "task_level": "easy",
+    "true_label": "bug",
+    "true_bug_line": null,
+    "true_team": "webdev",
+    "true_fix_keywords": [
+      "click",
+      "event"
+    ]
+  },
+  {
+    "id": "issue-11",
+    "title": "NullReferenceException in UserProfile 1",
+    "body": "Getting exception when viewing a user without an avatar.",
+    "code_snippet": "1. def get_avatar(user):\n2.     if user:\n3.         return user.avatar.url\n4.     return 'default.png'",
+    "labels": [
+      "backend"
+    ],
+    "task_level": "medium",
+    "true_label": "bug",
+    "true_bug_line": 3,
+    "true_team": "webdev",
+    "true_fix_keywords": [
+      "check if user.avatar",
+      "None",
+      "hasattr"
+    ]
+  },
+  {
+    "id": "issue-12",
+    "title": "NullReferenceException in UserProfile 2",
+    "body": "Getting exception when viewing a user without an avatar.",
+    "code_snippet": "1. def get_avatar(user):\n2.     if user:\n3.         return user.avatar.url\n4.     return 'default.png'",
+    "labels": [
+      "backend"
+    ],
+    "task_level": "medium",
+    "true_label": "bug",
+    "true_bug_line": 3,
+    "true_team": "webdev",
+    "true_fix_keywords": [
+      "check if user.avatar",
+      "None",
+      "hasattr"
+    ]
+  },
+  {
+    "id": "issue-13",
+    "title": "NullReferenceException in UserProfile 3",
+    "body": "Getting exception when viewing a user without an avatar.",
+    "code_snippet": "1. def get_avatar(user):\n2.     if user:\n3.         return user.avatar.url\n4.     return 'default.png'",
+    "labels": [
+      "backend"
+    ],
+    "task_level": "medium",
+    "true_label": "bug",
+    "true_bug_line": 3,
+    "true_team": "webdev",
+    "true_fix_keywords": [
+      "check if user.avatar",
+      "None",
+      "hasattr"
+    ]
+  },
+  {
+    "id": "issue-14",
+    "title": "NullReferenceException in UserProfile 4",
+    "body": "Getting exception when viewing a user without an avatar.",
+    "code_snippet": "1. def get_avatar(user):\n2.     if user:\n3.         return user.avatar.url\n4.     return 'default.png'",
+    "labels": [
+      "backend"
+    ],
+    "task_level": "medium",
+    "true_label": "bug",
+    "true_bug_line": 3,
+    "true_team": "webdev",
+    "true_fix_keywords": [
+      "check if user.avatar",
+      "None",
+      "hasattr"
+    ]
+  },
+  {
+    "id": "issue-15",
+    "title": "NullReferenceException in UserProfile 5",
+    "body": "Getting exception when viewing a user without an avatar.",
+    "code_snippet": "1. def get_avatar(user):\n2.     if user:\n3.         return user.avatar.url\n4.     return 'default.png'",
+    "labels": [
+      "backend"
+    ],
+    "task_level": "medium",
+    "true_label": "bug",
+    "true_bug_line": 3,
+    "true_team": "webdev",
+    "true_fix_keywords": [
+      "check if user.avatar",
+      "None",
+      "hasattr"
+    ]
+  },
+  {
+    "id": "issue-16",
+    "title": "NullReferenceException in UserProfile 6",
+    "body": "Getting exception when viewing a user without an avatar.",
+    "code_snippet": "1. def get_avatar(user):\n2.     if user:\n3.         return user.avatar.url\n4.     return 'default.png'",
+    "labels": [
+      "backend"
+    ],
+    "task_level": "medium",
+    "true_label": "bug",
+    "true_bug_line": 3,
+    "true_team": "webdev",
+    "true_fix_keywords": [
+      "check if user.avatar",
+      "None",
+      "hasattr"
+    ]
+  },
+  {
+    "id": "issue-17",
+    "title": "NullReferenceException in UserProfile 7",
+    "body": "Getting exception when viewing a user without an avatar.",
+    "code_snippet": "1. def get_avatar(user):\n2.     if user:\n3.         return user.avatar.url\n4.     return 'default.png'",
+    "labels": [
+      "backend"
+    ],
+    "task_level": "medium",
+    "true_label": "bug",
+    "true_bug_line": 3,
+    "true_team": "webdev",
+    "true_fix_keywords": [
+      "check if user.avatar",
+      "None",
+      "hasattr"
+    ]
+  },
+  {
+    "id": "issue-18",
+    "title": "NullReferenceException in UserProfile 8",
+    "body": "Getting exception when viewing a user without an avatar.",
+    "code_snippet": "1. def get_avatar(user):\n2.     if user:\n3.         return user.avatar.url\n4.     return 'default.png'",
+    "labels": [
+      "backend"
+    ],
+    "task_level": "medium",
+    "true_label": "bug",
+    "true_bug_line": 3,
+    "true_team": "webdev",
+    "true_fix_keywords": [
+      "check if user.avatar",
+      "None",
+      "hasattr"
+    ]
+  },
+  {
+    "id": "issue-19",
+    "title": "NullReferenceException in UserProfile 9",
+    "body": "Getting exception when viewing a user without an avatar.",
+    "code_snippet": "1. def get_avatar(user):\n2.     if user:\n3.         return user.avatar.url\n4.     return 'default.png'",
+    "labels": [
+      "backend"
+    ],
+    "task_level": "medium",
+    "true_label": "bug",
+    "true_bug_line": 3,
+    "true_team": "webdev",
+    "true_fix_keywords": [
+      "check if user.avatar",
+      "None",
+      "hasattr"
+    ]
+  },
+  {
+    "id": "issue-20",
+    "title": "NullReferenceException in UserProfile 10",
+    "body": "Getting exception when viewing a user without an avatar.",
+    "code_snippet": "1. def get_avatar(user):\n2.     if user:\n3.         return user.avatar.url\n4.     return 'default.png'",
+    "labels": [
+      "backend"
+    ],
+    "task_level": "medium",
+    "true_label": "bug",
+    "true_bug_line": 3,
+    "true_team": "webdev",
+    "true_fix_keywords": [
+      "check if user.avatar",
+      "None",
+      "hasattr"
+    ]
+  },
+  {
+    "id": "issue-21",
+    "title": "Model inference takes too long 1",
+    "body": "The new transformer model is timing out the API response.",
+    "code_snippet": "1. def predict(text):\n2.     model = load_model()\n3.     inputs = tokenize(text)\n4.     return model(inputs)",
+    "labels": [
+      "performance"
+    ],
+    "task_level": "hard",
+    "true_label": "bug",
+    "true_bug_line": 2,
+    "true_team": "aiml",
+    "true_fix_keywords": [
+      "cache",
+      "load_model",
+      "global"
+    ]
+  },
+  {
+    "id": "issue-22",
+    "title": "Model inference takes too long 2",
+    "body": "The new transformer model is timing out the API response.",
+    "code_snippet": "1. def predict(text):\n2.     model = load_model()\n3.     inputs = tokenize(text)\n4.     return model(inputs)",
+    "labels": [
+      "performance"
+    ],
+    "task_level": "hard",
+    "true_label": "bug",
+    "true_bug_line": 2,
+    "true_team": "aiml",
+    "true_fix_keywords": [
+      "cache",
+      "load_model",
+      "global"
+    ]
+  },
+  {
+    "id": "issue-23",
+    "title": "Model inference takes too long 3",
+    "body": "The new transformer model is timing out the API response.",
+    "code_snippet": "1. def predict(text):\n2.     model = load_model()\n3.     inputs = tokenize(text)\n4.     return model(inputs)",
+    "labels": [
+      "performance"
+    ],
+    "task_level": "hard",
+    "true_label": "bug",
+    "true_bug_line": 2,
+    "true_team": "aiml",
+    "true_fix_keywords": [
+      "cache",
+      "load_model",
+      "global"
+    ]
+  },
+  {
+    "id": "issue-24",
+    "title": "Model inference takes too long 4",
+    "body": "The new transformer model is timing out the API response.",
+    "code_snippet": "1. def predict(text):\n2.     model = load_model()\n3.     inputs = tokenize(text)\n4.     return model(inputs)",
+    "labels": [
+      "performance"
+    ],
+    "task_level": "hard",
+    "true_label": "bug",
+    "true_bug_line": 2,
+    "true_team": "aiml",
+    "true_fix_keywords": [
+      "cache",
+      "load_model",
+      "global"
+    ]
+  },
+  {
+    "id": "issue-25",
+    "title": "Model inference takes too long 5",
+    "body": "The new transformer model is timing out the API response.",
+    "code_snippet": "1. def predict(text):\n2.     model = load_model()\n3.     inputs = tokenize(text)\n4.     return model(inputs)",
+    "labels": [
+      "performance"
+    ],
+    "task_level": "hard",
+    "true_label": "bug",
+    "true_bug_line": 2,
+    "true_team": "aiml",
+    "true_fix_keywords": [
+      "cache",
+      "load_model",
+      "global"
+    ]
+  },
+  {
+    "id": "issue-26",
+    "title": "Model inference takes too long 6",
+    "body": "The new transformer model is timing out the API response.",
+    "code_snippet": "1. def predict(text):\n2.     model = load_model()\n3.     inputs = tokenize(text)\n4.     return model(inputs)",
+    "labels": [
+      "performance"
+    ],
+    "task_level": "hard",
+    "true_label": "bug",
+    "true_bug_line": 2,
+    "true_team": "aiml",
+    "true_fix_keywords": [
+      "cache",
+      "load_model",
+      "global"
+    ]
+  },
+  {
+    "id": "issue-27",
+    "title": "Model inference takes too long 7",
+    "body": "The new transformer model is timing out the API response.",
+    "code_snippet": "1. def predict(text):\n2.     model = load_model()\n3.     inputs = tokenize(text)\n4.     return model(inputs)",
+    "labels": [
+      "performance"
+    ],
+    "task_level": "hard",
+    "true_label": "bug",
+    "true_bug_line": 2,
+    "true_team": "aiml",
+    "true_fix_keywords": [
+      "cache",
+      "load_model",
+      "global"
+    ]
+  },
+  {
+    "id": "issue-28",
+    "title": "Model inference takes too long 8",
+    "body": "The new transformer model is timing out the API response.",
+    "code_snippet": "1. def predict(text):\n2.     model = load_model()\n3.     inputs = tokenize(text)\n4.     return model(inputs)",
+    "labels": [
+      "performance"
+    ],
+    "task_level": "hard",
+    "true_label": "bug",
+    "true_bug_line": 2,
+    "true_team": "aiml",
+    "true_fix_keywords": [
+      "cache",
+      "load_model",
+      "global"
+    ]
+  },
+  {
+    "id": "issue-29",
+    "title": "Model inference takes too long 9",
+    "body": "The new transformer model is timing out the API response.",
+    "code_snippet": "1. def predict(text):\n2.     model = load_model()\n3.     inputs = tokenize(text)\n4.     return model(inputs)",
+    "labels": [
+      "performance"
+    ],
+    "task_level": "hard",
+    "true_label": "bug",
+    "true_bug_line": 2,
+    "true_team": "aiml",
+    "true_fix_keywords": [
+      "cache",
+      "load_model",
+      "global"
+    ]
+  },
+  {
+    "id": "issue-30",
+    "title": "Model inference takes too long 10",
+    "body": "The new transformer model is timing out the API response.",
+    "code_snippet": "1. def predict(text):\n2.     model = load_model()\n3.     inputs = tokenize(text)\n4.     return model(inputs)",
+    "labels": [
+      "performance"
+    ],
+    "task_level": "hard",
+    "true_label": "bug",
+    "true_bug_line": 2,
+    "true_team": "aiml",
+    "true_fix_keywords": [
+      "cache",
+      "load_model",
+      "global"
+    ]
+  }
+]

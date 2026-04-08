@@ -1,0 +1,23 @@
+name: dev_triage_env
+version: "1.0.0"
+description: >
+  GitHub issue triage environment where an LLM agent classifies issues,
+  identifies bug lines, routes to the correct team, and suggests fixes.
+tasks:
+  - id: task_easy
+    name: Issue Classification
+    difficulty: easy
+    description: Classify issue as bug, feature, or duplicate. Score 0 or 1.
+  - id: task_medium
+    name: Bug Line Identification  
+    difficulty: medium
+    description: Classify + find exact bug line. Partial credit for proximity.
+  - id: task_hard
+    name: Full Triage + Fix Suggestion
+    difficulty: hard
+    description: Classify + bug line + team routing + keyword-checked fix.
+author: your_hf_username
+tags:
+  - openenv
+  - code-review
+  - developer-tools
