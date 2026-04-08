@@ -1,76 +1,123 @@
 ---
 title: DevTriage Environment
+emoji: 🔍
+colorFrom: blue
+colorTo: orange
 sdk: docker
+pinned: false
 tags:
   - openenv
+  - developer-tools
+  - code-review
 ---
+
 # DevTriageEnv
-A GitHub issue triage environment where an LLM agent reads issues and PRs, classifies them, finds bug lines in code, routes to the right team, and suggests fixes. 
+
+A GitHub issue triage environment where an LLM agent classifies issues, identifies bug lines in code, routes to the correct engineering team, and suggests fixes.
+
 Built for the **Meta × Scaler OpenEnv Hackathon 2026**.
 
-## Description
-This environment models a genuine, real-world task: issue management and triage in a software development context.
-The environment exposes a REST API via FastAPI, fully compliant with OpenEnv specifications (typed models, `step()`/`reset()`/`state()`, and metadata in `openenv.yaml`).
+## Environment Description
+
+This environment models a genuine daily developer task: triaging a GitHub inbox. Developers spend significant time classifying issues, spotting bugs in code snippets, routing to the right team, and writing fix suggestions. DevTriageEnv turns this into a structured RL problem with 30 mock GitHub issues and deterministic graders.
+
+## Action Space
+
+| Field | Type | Required | Valid Values |
+|-------|------|----------|--------------|
+| `classification` | string | Always | `bug`, `feature`, `duplicate` |
+| `bug_line` | int or null | Medium + Hard | Line number (1-indexed) |
+| `team` | string or null | Hard | `webdev`, `devops`, `aiml` |
+| `suggested_fix` | string or null | Hard | One-sentence fix description |
+
+## Observation Space
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `issue_id` | string | Unique issue identifier |
+| `title` | string | Issue title |
+| `body` | string | Issue description |
+| `code_snippet` | string or null | Code snippet (present for medium/hard) |
+| `existing_labels` | list[string] | Labels already on the issue |
+| `task_level` | string | `easy`, `medium`, or `hard` |
+| `done` | bool | Whether episode is complete |
+| `reward` | float or null | Score after step(), null after reset() |
+
+## Tasks
+
+**Task 1 — Issue Classification (Easy)**
+Classify the issue as `bug`, `feature`, or `duplicate`. Score: 1.0 if correct, 0.0 otherwise.
+
+**Task 2 — Bug Line Identification (Medium)**
+Classify the issue and identify the exact line containing the bug. Score: 0.40 (classification) + 0.40 (exact line) + 0.20 (proximity ±1 line).
+
+**Task 3 — Full Triage + Fix Suggestion (Hard)**
+Classify, identify bug line, route to correct team, and suggest a concrete fix. Score: 0.25 per component. Fix scored by keyword relevance, not length.
+
+## Baseline Scores
+
+Evaluated using `meta-llama/Llama-3.1-8B-Instruct` via Groq inference API over 38 episodes.
+
+| Task | Average Score | Std | Episodes |
+|------|---------------|-----|----------|
+| Easy | 1.000 | 0.000 | 14 |
+| Medium | 0.523 | 0.130 | 13 |
+| Hard | 0.795 | 0.147 | 11 |
+
+> Easy std=0.000 reflects that classification-only tasks are consistently solved by the baseline model. Variance appears in medium and hard tasks where partial credit graders are active.
 
 ## Setup and Usage
 
 ### Prerequisites
-- Docker (optional but recommended for running exactly like HF Spaces)
 - Python 3.11
+- Docker (for containerized deployment)
 
-### Running Locally (Native)
+### Running Locally
 
-1. Set your environment variables (PowerShell example):
-   ```powershell
-   $env:HF_TOKEN = "gsk_yourGroqKeyHere"
-   $env:API_BASE_URL = "https://api.groq.com/openai/v1"
-   $env:MODEL_NAME = "llama-3.1-8b-instant"
-   $env:ENV_URL = "http://localhost:7860"
-   ```
-
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. Start the server (on port 7860):
-   ```bash
-   uvicorn server.app:app --host 0.0.0.0 --port 7860 --reload
-   ```
-
-4. Test in browser:
-   Visit http://localhost:7860/docs
-
-### Running via Docker
+1. Set environment variables:
 ```bash
-docker build -t dev-triage-env .
-docker run -p 7860:7860 dev-triage-env
+   export HF_TOKEN="gsk_yourGroqKeyHere"
+   export API_BASE_URL="https://api.groq.com/openai/v1"
+   export MODEL_NAME="llama-3.1-8b-instant"
+   export ENV_URL="http://localhost:7860"
 ```
 
-### Deploying to HuggingFace Spaces
-1. Create a newly hosted Space on Hugging Face.
-2. Select **Docker** as the Space SDK.
-3. Choose the "Blank" Docker template (it defaults to port 7860).
-4. Commit all files in this directory to the Space repository.
-5. Hugging Face Spaces will automatically find the root `Dockerfile` and deploy the application.
+2. Install dependencies:
+```bash
+   pip install -r requirements.txt
+```
 
-### Baseline Inference
-We include a baseline reasoning script that parses the `localhost:7860` server via REST calls and performs inference.
+3. Start the server:
+```bash
+   uvicorn server.app:app --host 0.0.0.0 --port 7860 --reload
+```
+
+4. Visit `http://localhost:7860/docs` to explore the API interactively.
+
+### Running via Docker
+
+```bash
+docker build -t dev-triage-env .
+docker run -p 7860:7860 \
+  -e HF_TOKEN=your_key \
+  -e API_BASE_URL=https://api.groq.com/openai/v1 \
+  -e MODEL_NAME=llama-3.1-8b-instant \
+  dev-triage-env
+```
+
+### Running Baseline Inference
+
 ```bash
 python inference.py
 ```
 
-## Task Difficulties & Graders
+## API Endpoints
 
-1. **Easy (Issue Classification):** Classify issue as bug, feature, or duplicate. Score 0 or 1.
-2. **Medium (Bug Line Identification):** Classify + find exact bug line. Partial credit for proximity.
-3. **Hard (Full Triage + Fix Suggestion):** Classify + bug line + team routing + keyword-checked fix.
-
-Action and observation spaces use typed Pydantic models (see `models.py`). Every task features a non-gameable deterministic grader bounded strictly between [0.0, 1.0].
-
-### Baseline Scores (CoT Improved)
-| Difficulty | Average Score |
-|------------|---------------|
-| Easy       | 1.000 ± 0.000 |
-| Medium     | 0.800 ± 0.000 |
-| Hard       | 0.800 ± 0.000 |
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/health` | GET | Health check — returns `{"status": "healthy"}` |
+| `/reset` | POST | Start new episode, returns initial observation |
+| `/step` | POST | Submit action, returns observation + reward |
+| `/state` | GET | Current episode metadata |
+| `/tasks` | GET | List all 3 tasks |
+| `/docs` | GET | Interactive Swagger UI |
