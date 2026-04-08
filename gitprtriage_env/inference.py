@@ -94,6 +94,7 @@ def run_episode() -> tuple:
         temperature=0.1,
     )
     action = parse_action(response.choices[0].message.content)
+    action.pop("thought_process", None)  # Clean internal reasoning payload before sending to strict API
     result = requests.post(f"{ENV_URL}/step", json=action, timeout=10).json()
     return result.get("reward", 0.0), task_level
 
