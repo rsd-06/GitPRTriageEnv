@@ -13,11 +13,11 @@ tags:
 
 # GitPRTriage Env
 
-A GitHub issue triage and routing environment powered by RL agents. Built for the **Meta × Scaler OpenEnv Hackathon 2026**.
+A GitHub issue triage and issue routing environment powered by RL agents. Built for the **Meta × Scaler OpenEnv Hackathon 2026**.
 
 ## Problem Statement
 
-Enterprise engineering teams spend thousands of collective hours annually reading through unstructured GitHub issues, identifying whether they are genuine bugs or duplicate feature requests, isolating the faulty lines of code across massive repositories, and determining which specialized internal team (e.g., DevOps, WebDev, AIML) should urgently handle them. 
+Enterprise engineering teams spend thousands of collective hours annually reading through unstructured GitHub issues, identifying whether they are genuine bugs or duplicate feature requests, isolating the faulty lines of code across massive repositories, and determining which specialized internal team (e.g., DevOps, WebDev, AIML) should urgently handle them.
 
 **GitPRTriage Env** transforms this grueling, high-friction manual workflow into a rigorous, interactive OpenEnv reinforcement learning benchmark. By providing agents with raw markdown descriptions and broken code snippets extracted directly from realistic development pipelines, the environment natively tests an LLM's capacity to orchestrate complex developer operations autonomously. It explicitly fills a crucial gap in modern agentic capability evaluations by shifting away from standard toy box games and firmly into professional, multi-layered software development workflows.
 
@@ -58,17 +58,35 @@ Classify the issue and identify the exact line containing the bug. Score: 0.40 (
 **Task 3 — Full Triage + Fix Suggestion (Hard)**
 Classify, identify bug line, route to correct team, and suggest a concrete fix. Score: 0.25 per component. Fix scored by keyword relevance, not length.
 
+## Grader Design
+
+Graders are deterministic, non-gameable, and return floats strictly in [0.0, 1.0].
+
+**Easy:** Binary — 1.0 for correct classification, 0.0 otherwise.
+
+**Medium:** Partial credit — 0.40 classification + 0.40 exact bug line + 0.20 proximity bonus (±1 line). String bug_line values are cast to int to handle LLM formatting quirks.
+
+**Hard:** Four equal components (0.25 each) — classification, bug line (0.10 for ±1 proximity), team routing, fix quality. Fix is scored by keyword relevance against `true_fix_keywords` in the dataset: 2+ keywords = 0.25, 1 keyword = 0.15, non-empty but no match = 0.05 effort credit.
+
+## Dataset
+
+30 mock GitHub issues across three difficulty levels (10 each). Each issue contains:
+- `true_label` — ground truth classification
+- `true_bug_line` — exact bug line for medium/hard
+- `true_team` — correct routing team for hard
+- `true_fix_keywords` — relevant fix keywords for hard grader
+
+Ground truth fields are never exposed in observations — only used internally by graders.
+
 ## Baseline Scores
 
-Evaluated using `llama-3.1-8b-instant` via Groq inference API over a full 60-episode automated environment run. To handle context complexity on larger tasks, advanced **Chain-of-Thought (CoT)** reasoning was integrated directly into the core JSON parsing prompt.
+Evaluated using `llama-3.1-8b-instant` via Groq inference API over a full 60-episode automated environment run. Chain-of-Thought (CoT) reasoning was integrated into the prompt, requiring the model to produce a `thought_process` array before the classification payload, improving contextual understanding on medium and hard tasks.
 
 | Task   | Average Score | Std   | Episodes |
 |--------|---------------|-------|----------|
-| Easy   | 0.767         | 0.354 | 15       |
-| Medium | 0.768         | 0.192 | 19       |
-| Hard   | 0.727         | 0.112 | 26       |
-
-> By explicitly implementing a Chain-of-Thought JSON constraint (forcing a `thought_process` reasoning path *before* classification payload), we significantly accelerate the agent's contextual understanding. Hard tasks jump substantially beyond default zero-shot bounds, picking up strong, extremely consistent keyword and line-number partial credits across all evaluations.
+| Easy   | 1.000         | 0.000 | 23       |
+| Medium | 0.800         | 0.000 | 18       |
+| Hard   | 0.774         | 0.079 | 19       |
 
 ## Setup and Usage
 
@@ -80,20 +98,20 @@ Evaluated using `llama-3.1-8b-instant` via Groq inference API over a full 60-epi
 
 1. Set environment variables:
 ```bash
-   export HF_TOKEN="gsk_yourGroqKeyHere"
-   export API_BASE_URL="https://api.groq.com/openai/v1"
-   export MODEL_NAME="llama-3.1-8b-instant"
-   export ENV_URL="http://localhost:7860"
+export HF_TOKEN="your_api_key_here"
+export API_BASE_URL="https://api.groq.com/openai/v1"
+export MODEL_NAME="llama-3.1-8b-instant"
+export ENV_URL="http://localhost:7860"
 ```
 
 2. Install dependencies:
 ```bash
-   pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 3. Start the server:
 ```bash
-   uvicorn server.app:app --host 0.0.0.0 --port 7860 --reload
+uvicorn server.app:app --host 0.0.0.0 --port 7860 --reload
 ```
 
 4. Visit `http://localhost:7860/docs` to explore the API interactively.
@@ -103,7 +121,7 @@ Evaluated using `llama-3.1-8b-instant` via Groq inference API over a full 60-epi
 ```bash
 docker build -t dev-triage-env .
 docker run -p 7860:7860 \
-  -e HF_TOKEN=your_key \
+  -e HF_TOKEN=your_api_key_here \
   -e API_BASE_URL=https://api.groq.com/openai/v1 \
   -e MODEL_NAME=llama-3.1-8b-instant \
   dev-triage-env
