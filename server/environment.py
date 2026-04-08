@@ -9,8 +9,8 @@ def grade_easy(action: dict, truth: dict) -> float:
     classification = (action.get("classification") or "").lower().strip()
     true_label = (truth.get("true_label") or "").lower().strip()
     if not classification:
-        return 0.0
-    return 1.0 if classification == true_label else 0.0
+        return 0.001
+    return 0.999 if classification == true_label else 0.001
 
 def grade_medium(action: dict, truth: dict) -> float:
     classification = (action.get("classification") or "").lower().strip()
@@ -32,7 +32,7 @@ def grade_medium(action: dict, truth: dict) -> float:
         except (TypeError, ValueError):
             pass
 
-    return round(min(score, 1.0), 3)
+    return min(max(round(score, 3), 0.001), 0.999)
 
 def grade_hard(action: dict, truth: dict) -> float:
     classification = (action.get("classification") or "").lower().strip()
@@ -74,7 +74,7 @@ def grade_hard(action: dict, truth: dict) -> float:
         else:
             score += 0.05
 
-    return round(min(score, 1.0), 3)
+    return min(max(round(score, 3), 0.001), 0.999)
 
 def grade(action: dict, truth: dict) -> float:
     level = truth.get("task_level", "easy")
