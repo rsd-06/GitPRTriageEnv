@@ -84,16 +84,22 @@ def run_episode() -> tuple:
     parts.append(f"\nTask Level: {task_level}\nRespond with ONLY JSON.")
     prompt = "\n".join(parts)
 
-    response = client.chat.completions.create(
-        model=MODEL_NAME,
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user",   "content": prompt},
-        ],
-        max_tokens=600,
-        temperature=0.1,
-    )
-    action = parse_action(response.choices[0].message.content)
+    try:
+        response = client.chat.completions.create(
+            model=MODEL_NAME,
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user",   "content": prompt},
+            ],
+            max_tokens=600,
+            temperature=0.1,
+        )
+        content = response.choices[0].message.content
+    except Exception as exc:
+        print(f"Model request failed ({exc}). Using fallback action.")
+        content = "{}"
+
+    action = parse_action(content)
     action.pop("thought_process", None)  # Clean internal reasoning payload before sending to strict API
     result = requests.post(f"{ENV_URL}/step", json=action, timeout=10).json()
     return result.get("reward", 0.0), task_level
