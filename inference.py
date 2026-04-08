@@ -103,7 +103,7 @@ def run_episode() -> tuple:
     action = parse_action(content)
     action.pop("thought_process", None)  # Clean internal reasoning payload before sending to strict API
     result = requests.post(f"{ENV_URL}/step", json=action, timeout=10).json()
-    score = result.get("reward", 0.0)
+    score = float(result.get("reward") if result.get("reward") is not None else 0.001)
     
     print(f"[STEP] step=1 reward={score}", flush=True)
     print(f"[END] task={task_level} score={score} steps=1", flush=True)
