@@ -3,7 +3,12 @@ from fastapi.middleware.cors import CORSMiddleware
 from server.environment import DevTriageEnvironment
 from models import TriageAction
 
-app = FastAPI(title="DevTriageEnv")
+app = FastAPI(title="GitPRTriage Env")
+
+@app.get("/")
+def root():
+    # Provide a friendly landing message instead of FastAPI's default 404
+    return {"message": "GitPRTriage Env API is live! Navigate to /docs to use the interactive Swagger UI.", "status": "healthy"}
 
 app.add_middleware(
     CORSMiddleware,
@@ -53,3 +58,12 @@ def tasks():
             "description": "Classify + bug line + team routing + keyword-checked fix."
         }
     ]
+
+import uvicorn
+
+def main():
+    uvicorn.run('server.app:app', host='0.0.0.0', port=7860)
+
+if __name__ == '__main__':
+    main()
+

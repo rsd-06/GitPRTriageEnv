@@ -2,7 +2,7 @@
 title: DevTriage Environment
 emoji: 🔍
 colorFrom: blue
-colorTo: orange
+colorTo: pink
 sdk: docker
 pinned: false
 tags:
