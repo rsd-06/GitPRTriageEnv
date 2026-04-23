@@ -1,542 +1,816 @@
 [
   {
-    "id": "issue-1",
-    "title": "Add dark mode to the landing page",
-    "body": "It would be great to have a dark mode toggle.",
+    "id": "issue-easy-1",
+    "title": "App crashes immediately on startup on iOS 17",
+    "body": "Since the last update, every time I try to open the app on my iPhone 14 Pro running iOS 17, it immediately closes. I've tried reinstalling but it still happens.",
     "code_snippet": null,
     "labels": [
+      "bug",
       "mobile",
-      "urgent"
+      "p1-critical"
+    ],
+    "task_level": "easy",
+    "true_label": "bug",
+    "true_bug_line": null,
+    "true_team": null,
+    "true_fix_keywords": []
+  },
+  {
+    "id": "issue-easy-2",
+    "title": "Checkout button is unclickable on Firefox",
+    "body": "When I go to my cart in Firefox 119, the checkout button is covered by the footer. This prevents me from making any purchases. Works fine on Chrome.",
+    "code_snippet": null,
+    "labels": [
+      "bug",
+      "frontend",
+      "ui"
+    ],
+    "task_level": "easy",
+    "true_label": "bug",
+    "true_bug_line": null,
+    "true_team": null,
+    "true_fix_keywords": []
+  },
+  {
+    "id": "issue-easy-3",
+    "title": "User profile API returns 500 intermittently",
+    "body": "We are seeing intermittent 500 Internal Server Errors when calling the /api/v1/profile endpoint during peak traffic hours. It seems to happen under heavy load.",
+    "code_snippet": null,
+    "labels": [
+      "bug",
+      "backend",
+      "performance"
+    ],
+    "task_level": "easy",
+    "true_label": "bug",
+    "true_bug_line": null,
+    "true_team": null,
+    "true_fix_keywords": []
+  },
+  {
+    "id": "issue-easy-4",
+    "title": "Password reset link expires immediately",
+    "body": "Users are reporting that the password reset link sent to their email says it is expired as soon as they click it. This started happening after yesterday's deployment.",
+    "code_snippet": null,
+    "labels": [
+      "bug",
+      "security",
+      "auth"
+    ],
+    "task_level": "easy",
+    "true_label": "bug",
+    "true_bug_line": null,
+    "true_team": null,
+    "true_fix_keywords": []
+  },
+  {
+    "id": "issue-easy-5",
+    "title": "Local dev script fails on M1 Mac",
+    "body": "When I run `make setup` on my M1 Mac, it fails trying to install python dependencies. It looks like it's looking for an x86 version of the cryptography library.",
+    "code_snippet": null,
+    "labels": [
+      "bug",
+      "developer-tools"
+    ],
+    "task_level": "easy",
+    "true_label": "bug",
+    "true_bug_line": null,
+    "true_team": null,
+    "true_fix_keywords": []
+  },
+  {
+    "id": "issue-easy-6",
+    "title": "Slack integration webhook failing with 400 Bad Request",
+    "body": "Our notifications are no longer propagating to Slack. The logs show that the Slack API is returning a 400 Bad Request whenever we try to send an alert payload.",
+    "code_snippet": null,
+    "labels": [
+      "bug",
+      "integration"
+    ],
+    "task_level": "easy",
+    "true_label": "bug",
+    "true_bug_line": null,
+    "true_team": null,
+    "true_fix_keywords": []
+  },
+  {
+    "id": "issue-easy-7",
+    "title": "Add daily active users (DAU) graph to dashboard",
+    "body": "It would be incredibly helpful to have a visual graph of DAU on the analytics dashboard. Right now we have to export the CSV and graph it ourselves.",
+    "code_snippet": null,
+    "labels": [
+      "enhancement",
+      "analytics"
     ],
     "task_level": "easy",
     "true_label": "feature",
     "true_bug_line": null,
-    "true_team": "webdev",
-    "true_fix_keywords": [
-      "click",
-      "event"
-    ]
+    "true_team": null,
+    "true_fix_keywords": []
   },
   {
-    "id": "issue-2",
-    "title": "Dark mode is missing",
-    "body": "Duplicate of Add dark mode to the landing page.",
+    "id": "issue-easy-8",
+    "title": "Support deploying to AWS ECS via GitHub Actions",
+    "body": "Currently our deployment pipeline only supports standard EC2 instances. Could we add an option in our infrastructure configs to support automated deployment to ECS Fargate?",
     "code_snippet": null,
     "labels": [
-      "mobile",
-      "urgent"
+      "enhancement",
+      "ci-cd",
+      "infrastructure"
+    ],
+    "task_level": "easy",
+    "true_label": "feature",
+    "true_bug_line": null,
+    "true_team": null,
+    "true_fix_keywords": []
+  },
+  {
+    "id": "issue-easy-9",
+    "title": "Dark mode support for the administration panel",
+    "body": "My eyes burn when debugging using the admin panel at night. Please add a dark mode toggle to the top navigation bar.",
+    "code_snippet": null,
+    "labels": [
+      "enhancement",
+      "ui"
+    ],
+    "task_level": "easy",
+    "true_label": "feature",
+    "true_bug_line": null,
+    "true_team": null,
+    "true_fix_keywords": []
+  },
+  {
+    "id": "issue-easy-10",
+    "title": "Push notifications for message replies",
+    "body": "I often miss when someone replies directly to my thread in the mobile app. It would be great if we could get push notifications specifically for replies.",
+    "code_snippet": null,
+    "labels": [
+      "enhancement",
+      "mobile"
+    ],
+    "task_level": "easy",
+    "true_label": "feature",
+    "true_bug_line": null,
+    "true_team": null,
+    "true_fix_keywords": []
+  },
+  {
+    "id": "issue-easy-11",
+    "title": "Add keyboard shortcuts for navigating the timeline",
+    "body": "Power users would benefit from being able to use J and K keys to navigate up and down the web timeline view, similar to Twitter and Vim.",
+    "code_snippet": null,
+    "labels": [
+      "enhancement",
+      "frontend"
+    ],
+    "task_level": "easy",
+    "true_label": "feature",
+    "true_bug_line": null,
+    "true_team": null,
+    "true_fix_keywords": []
+  },
+  {
+    "id": "issue-easy-12",
+    "title": "App won't stay open on iOS 17 update",
+    "body": "My app keeps crashing immediately when I tap the icon. This is the same as issue #1, I'm experiencing the exact same crash on my device.",
+    "code_snippet": null,
+    "labels": [
+      "duplicate",
+      "bug"
     ],
     "task_level": "easy",
     "true_label": "duplicate",
     "true_bug_line": null,
-    "true_team": "webdev",
-    "true_fix_keywords": [
-      "click",
-      "event"
-    ]
+    "true_team": null,
+    "true_fix_keywords": []
   },
   {
-    "id": "issue-3",
-    "title": "Login button is not working on mobile 3",
-    "body": "When I tap the login button on iOS, nothing happens.",
+    "id": "issue-easy-13",
+    "title": "Keyboard navigation with J/K",
+    "body": "Could we use J and K to move up and down the feed? Duplicate of the feature request filed in #11 last month.",
     "code_snippet": null,
     "labels": [
-      "mobile",
-      "urgent"
+      "duplicate",
+      "enhancement"
     ],
     "task_level": "easy",
-    "true_label": "bug",
+    "true_label": "duplicate",
     "true_bug_line": null,
-    "true_team": "webdev",
-    "true_fix_keywords": [
-      "click",
-      "event"
-    ]
+    "true_team": null,
+    "true_fix_keywords": []
   },
   {
-    "id": "issue-4",
-    "title": "Login button is not working on mobile 4",
-    "body": "When I tap the login button on iOS, nothing happens.",
+    "id": "issue-easy-14",
+    "title": "500 errors on profile page load",
+    "body": "I'm seeing 500 errors on the profile endpoint. Noting here that this is related and duplicate of #3 which tracks the backend load issue.",
     "code_snippet": null,
     "labels": [
-      "mobile",
-      "urgent"
+      "duplicate",
+      "bug",
+      "backend"
     ],
     "task_level": "easy",
-    "true_label": "bug",
+    "true_label": "duplicate",
     "true_bug_line": null,
-    "true_team": "webdev",
-    "true_fix_keywords": [
-      "click",
-      "event"
-    ]
+    "true_team": null,
+    "true_fix_keywords": []
   },
   {
-    "id": "issue-5",
-    "title": "Login button is not working on mobile 5",
-    "body": "When I tap the login button on iOS, nothing happens.",
+    "id": "issue-easy-15",
+    "title": "Night mode for admin ui",
+    "body": "We should really have a dark theme for the admin portal. Basically a duplicate of #9.",
     "code_snippet": null,
     "labels": [
-      "mobile",
-      "urgent"
+      "duplicate",
+      "ui"
     ],
     "task_level": "easy",
-    "true_label": "bug",
+    "true_label": "duplicate",
     "true_bug_line": null,
-    "true_team": "webdev",
-    "true_fix_keywords": [
-      "click",
-      "event"
-    ]
+    "true_team": null,
+    "true_fix_keywords": []
   },
   {
-    "id": "issue-6",
-    "title": "Login button is not working on mobile 6",
-    "body": "When I tap the login button on iOS, nothing happens.",
-    "code_snippet": null,
+    "id": "issue-medium-1",
+    "title": "Search query SQL injection vulnerability",
+    "body": "We noticed that a user can provide raw SQL in the search parameter and it modifies our query syntax. It seems we aren't using parameterized queries.",
+    "code_snippet": "1. def get_users_by_name(conn, search_term):\n2.     query = f\"SELECT * FROM users WHERE name = '{search_term}'\"\n3.     cursor = conn.cursor()\n4.     cursor.execute(query)\n5.     return cursor.fetchall()",
     "labels": [
-      "mobile",
-      "urgent"
-    ],
-    "task_level": "easy",
-    "true_label": "bug",
-    "true_bug_line": null,
-    "true_team": "webdev",
-    "true_fix_keywords": [
-      "click",
-      "event"
-    ]
-  },
-  {
-    "id": "issue-7",
-    "title": "Login button is not working on mobile 7",
-    "body": "When I tap the login button on iOS, nothing happens.",
-    "code_snippet": null,
-    "labels": [
-      "mobile",
-      "urgent"
-    ],
-    "task_level": "easy",
-    "true_label": "bug",
-    "true_bug_line": null,
-    "true_team": "webdev",
-    "true_fix_keywords": [
-      "click",
-      "event"
-    ]
-  },
-  {
-    "id": "issue-8",
-    "title": "Login button is not working on mobile 8",
-    "body": "When I tap the login button on iOS, nothing happens.",
-    "code_snippet": null,
-    "labels": [
-      "mobile",
-      "urgent"
-    ],
-    "task_level": "easy",
-    "true_label": "bug",
-    "true_bug_line": null,
-    "true_team": "webdev",
-    "true_fix_keywords": [
-      "click",
-      "event"
-    ]
-  },
-  {
-    "id": "issue-9",
-    "title": "Login button is not working on mobile 9",
-    "body": "When I tap the login button on iOS, nothing happens.",
-    "code_snippet": null,
-    "labels": [
-      "mobile",
-      "urgent"
-    ],
-    "task_level": "easy",
-    "true_label": "bug",
-    "true_bug_line": null,
-    "true_team": "webdev",
-    "true_fix_keywords": [
-      "click",
-      "event"
-    ]
-  },
-  {
-    "id": "issue-10",
-    "title": "Login button is not working on mobile 10",
-    "body": "When I tap the login button on iOS, nothing happens.",
-    "code_snippet": null,
-    "labels": [
-      "mobile",
-      "urgent"
-    ],
-    "task_level": "easy",
-    "true_label": "bug",
-    "true_bug_line": null,
-    "true_team": "webdev",
-    "true_fix_keywords": [
-      "click",
-      "event"
-    ]
-  },
-  {
-    "id": "issue-11",
-    "title": "NullReferenceException in UserProfile 1",
-    "body": "Getting exception when viewing a user without an avatar.",
-    "code_snippet": "1. def get_avatar(user):\n2.     if user:\n3.         return user.avatar.url\n4.     return 'default.png'",
-    "labels": [
+      "bug",
+      "security",
       "backend"
     ],
     "task_level": "medium",
     "true_label": "bug",
-    "true_bug_line": 3,
-    "true_team": "webdev",
+    "true_bug_line": 2,
+    "true_team": null,
     "true_fix_keywords": [
-      "check if user.avatar",
-      "None",
-      "hasattr"
+      "parameterized",
+      "execute"
     ]
   },
   {
-    "id": "issue-12",
-    "title": "NullReferenceException in UserProfile 2",
-    "body": "Getting exception when viewing a user without an avatar.",
-    "code_snippet": "1. def get_avatar(user):\n2.     if user:\n3.         return user.avatar.url\n4.     return 'default.png'",
+    "id": "issue-medium-2",
+    "title": "Secure flag missing on auth cookie",
+    "body": "Our authentication cookie is being transmitted over unencrypted HTTP requests because the Secure flag is not set on the cookie.",
+    "code_snippet": "1. def set_auth_cookie(response, token):\n2.     response.set_cookie(\n3.         key=\"session_id\",\n4.         value=token,\n5.         httponly=True,\n6.         secure=False,\n7.         samesite=\"Lax\"\n8.     )\n9.     return response",
     "labels": [
-      "backend"
+      "bug",
+      "security",
+      "frontend"
+    ],
+    "task_level": "medium",
+    "true_label": "bug",
+    "true_bug_line": 6,
+    "true_team": null,
+    "true_fix_keywords": [
+      "secure=true",
+      "https"
+    ]
+  },
+  {
+    "id": "issue-medium-3",
+    "title": "API returns JSON as plain text instead of application/json",
+    "body": "The user summary endpoint is returning the JSON payload with a Content-Type of text/plain. This is breaking our client-side parsing.",
+    "code_snippet": "1. @app.route('/api/user/summary')\n2. def user_summary():\n3.     data = {\"user_id\": 1, \"status\": \"active\"}\n4.     response = make_response(json.dumps(data))\n5.     response.headers['Content-Type'] = 'text/plain'\n6.     return response",
+    "labels": [
+      "bug",
+      "backend",
+      "api"
+    ],
+    "task_level": "medium",
+    "true_label": "bug",
+    "true_bug_line": 5,
+    "true_team": null,
+    "true_fix_keywords": [
+      "application/json",
+      "content-type"
+    ]
+  },
+  {
+    "id": "issue-medium-4",
+    "title": "Input validation bypass for negative quantities",
+    "body": "Users are able to add negative quantities of items to their cart because the validation code only checks if the quantity is present, not if it's positive.",
+    "code_snippet": "1. def add_to_cart(cart, item_id, quantity):\n2.     if quantity is None:\n3.         raise ValueError(\"Quantity is required\")\n4.     cart.add(item_id, quantity)\n5.     cart.recalculate_total()",
+    "labels": [
+      "bug",
+      "backend",
+      "validation"
+    ],
+    "task_level": "medium",
+    "true_label": "bug",
+    "true_bug_line": 2,
+    "true_team": null,
+    "true_fix_keywords": [
+      "quantity <= 0",
+      "positive"
+    ]
+  },
+  {
+    "id": "issue-medium-5",
+    "title": "String truncation uses byte limit instead of char limit causing corrupt utf-8",
+    "body": "When a user submits a biography with emojis, our truncation logic cuts strings in the middle of UTF-8 byte sequences, raising an error when decoding later.",
+    "code_snippet": "1. def truncate_bio(bio_text):\n2.     encoded = bio_text.encode('utf-8')\n3.     if len(encoded) > 200:\n4.         encoded = encoded[:200]\n5.     return encoded.decode('utf-8')",
+    "labels": [
+      "bug",
+      "backend",
+      "encoding"
+    ],
+    "task_level": "medium",
+    "true_label": "bug",
+    "true_bug_line": 4,
+    "true_team": null,
+    "true_fix_keywords": [
+      "bio_text[:200]",
+      "character indexing"
+    ]
+  },
+  {
+    "id": "issue-medium-6",
+    "title": "Dockerfile forces full pip reinstall on every code change",
+    "body": "Our Docker builds take forever because requirements.txt is installed after the source code is copied. Editing any app code breaks the cache and forces pip install to run again.",
+    "code_snippet": "1. FROM python:3.11\n2. WORKDIR /app\n3. COPY . .\n4. RUN pip install -r requirements.txt\n5. EXPOSE 8080\n6. CMD [\"python\", \"app.py\"]",
+    "labels": [
+      "bug",
+      "docker",
+      "ci-cd"
     ],
     "task_level": "medium",
     "true_label": "bug",
     "true_bug_line": 3,
-    "true_team": "webdev",
+    "true_team": null,
     "true_fix_keywords": [
-      "check if user.avatar",
-      "None",
-      "hasattr"
+      "copy requirements.txt",
+      "cache layer"
     ]
   },
   {
-    "id": "issue-13",
-    "title": "NullReferenceException in UserProfile 3",
-    "body": "Getting exception when viewing a user without an avatar.",
-    "code_snippet": "1. def get_avatar(user):\n2.     if user:\n3.         return user.avatar.url\n4.     return 'default.png'",
+    "id": "issue-medium-7",
+    "title": "Environment Boolean parsing evaluates 'False' string as true",
+    "body": "When we set ENABLE_FEATURE=False in our `.env` file, the feature remains turned on. This happens because non-empty strings are truthy in Python.",
+    "code_snippet": "1. import os\n2. \n3. def load_config():\n4.     feature_enabled = bool(os.environ.get(\"ENABLE_FEATURE\", \"\"))\n5.     return {\"feature_enabled\": feature_enabled}",
     "labels": [
-      "backend"
+      "bug",
+      "backend",
+      "configuration"
     ],
     "task_level": "medium",
+    "true_label": "bug",
+    "true_bug_line": 4,
+    "true_team": null,
+    "true_fix_keywords": [
+      "lower() == 'true'",
+      "string parsing"
+    ]
+  },
+  {
+    "id": "issue-medium-8",
+    "title": "Health check fails with 404",
+    "body": "The liveness probe fails for our deployed app because the router is mapping 'healthz' but the probe is hitting '/health'.",
+    "code_snippet": "1. from fastapi import FastAPI\n2. app = FastAPI()\n3. \n4. @app.get(\"/healthz\")\n5. def check_health():\n6.     return {\"status\": \"ok\"}",
+    "labels": [
+      "bug",
+      "kubernetes",
+      "routing"
+    ],
+    "task_level": "medium",
+    "true_label": "bug",
+    "true_bug_line": 4,
+    "true_team": null,
+    "true_fix_keywords": [
+      "@app.get('/health')",
+      "path match"
+    ]
+  },
+  {
+    "id": "issue-medium-9",
+    "title": "Missing fallback to UTC causing log rotation crash around DST",
+    "body": "Our daily log rotator script crashed during daylight savings time changes because the timezone string parsing is missing a UTC fallback.",
+    "code_snippet": "1. import datetime\n2. import pytz\n3. \n4. def get_rotation_timestamp(tz_name):\n5.     tz = pytz.timezone(tz_name)\n6.     now = datetime.datetime.now(tz)\n7.     return now.strftime(\"%Y-%m-%d\")",
+    "labels": [
+      "bug",
+      "infrastructure",
+      "logging"
+    ],
+    "task_level": "medium",
+    "true_label": "bug",
+    "true_bug_line": 5,
+    "true_team": null,
+    "true_fix_keywords": [
+      "fallback",
+      "timezone exception"
+    ]
+  },
+  {
+    "id": "issue-medium-10",
+    "title": "Flaky builds due to unpinned dependency version",
+    "body": "Pip installs in CI occasionally break because the Requests library is not pinned, and a new major release broke an internal API.",
+    "code_snippet": "1. fastapi==0.95.0\n2. uvicorn==0.21.1\n3. pydantic==1.10.7\n4. requests\n5. python-dotenv==1.0.0",
+    "labels": [
+      "bug",
+      "ci-cd",
+      "dependencies"
+    ],
+    "task_level": "medium",
+    "true_label": "bug",
+    "true_bug_line": 4,
+    "true_team": null,
+    "true_fix_keywords": [
+      "requests==",
+      "pin version"
+    ]
+  },
+  {
+    "id": "issue-medium-11",
+    "title": "Matrix multiplication failure in final linear layer",
+    "body": "The forward pass crashes with a shape mismatch error because the linear layer expects 256 inputs but we pass the output of average pooling without flattening.",
+    "code_snippet": "1. class SimpleCNN(nn.Module):\n2.     def __init__(self):\n3.         super().__init__()\n4.         self.conv = nn.Conv2d(3, 16, kernel_size=3)\n5.         self.fc = nn.Linear(16 * 14 * 14, 10)\n6.     def forward(self, x):\n7.         x = F.relu(self.conv(x))\n8.         x = F.max_pool2d(x, 2)\n9.         x = self.fc(x)\n10.        return x",
+    "labels": [
+      "bug",
+      "ml",
+      "training"
+    ],
+    "task_level": "medium",
+    "true_label": "bug",
+    "true_bug_line": 9,
+    "true_team": null,
+    "true_fix_keywords": [
+      "x.view(-1",
+      "flatten(x)"
+    ]
+  },
+  {
+    "id": "issue-medium-12",
+    "title": "Image pixel values divided by 255 twice",
+    "body": "The model accuracy is horrible. I found that we divide by 255 in the custom dataset loader but then apply ToTensor() which divides by 255 again.",
+    "code_snippet": "1. class CustomDataset(Dataset):\n2.     def __getitem__(self, idx):\n3.         image = np.array(Image.open(self.paths[idx]))\n4.         image = image / 255.0\n5.         if self.transform:\n6.             image = self.transform(image)\n7.         return image, self.labels[idx]",
+    "labels": [
+      "bug",
+      "ml",
+      "data-processing"
+    ],
+    "task_level": "medium",
+    "true_label": "bug",
+    "true_bug_line": 4,
+    "true_team": null,
+    "true_fix_keywords": [
+      "remove scaling",
+      "totensor handles it"
+    ]
+  },
+  {
+    "id": "issue-medium-13",
+    "title": "CrossEntropyLoss fails with index out of bounds",
+    "body": "During training, CrossEntropyLoss throws an error. Our class labels range from 1 to 10, but PyTorch expects them to be 0-indexed.",
+    "code_snippet": "1. def prepare_labels(raw_labels):\n2.     label_map = {'cat': 1, 'dog': 2, 'bird': 3}\n3.     mapped = [label_map[l] for l in raw_labels]\n4.     return torch.tensor(mapped, dtype=torch.long)",
+    "labels": [
+      "bug",
+      "ml",
+      "training"
+    ],
+    "task_level": "medium",
+    "true_label": "bug",
+    "true_bug_line": 2,
+    "true_team": null,
+    "true_fix_keywords": [
+      "0-indexed",
+      "start at 0"
+    ]
+  },
+  {
+    "id": "issue-medium-14",
+    "title": "Training loss bounces wildly due to unzeroed gradients",
+    "body": "We missed the optimizer.zero_grad() call in our training loop. So gradients are accumulating across all batches in the epoch.",
+    "code_snippet": "1. def train_epoch(model, dataloader, optimizer, criterion):\n2.     model.train()\n3.     for inputs, targets in dataloader:\n4.         preds = model(inputs)\n5.         loss = criterion(preds, targets)\n6.         loss.backward()\n7.         optimizer.step()\n8.     return loss.item()",
+    "labels": [
+      "bug",
+      "ml",
+      "training"
+    ],
+    "task_level": "medium",
+    "true_label": "bug",
+    "true_bug_line": 6,
+    "true_team": null,
+    "true_fix_keywords": [
+      "optimizer.zero_grad()",
+      "zero gradients"
+    ]
+  },
+  {
+    "id": "issue-medium-15",
+    "title": "Best model checkpoint gets overwritten immediately",
+    "body": "Our script saves the best model incorrectly. It checks if the new validation loss is lower, but then saves the model outside of the if block.",
+    "code_snippet": "1. def check_and_save(model, val_loss, best_loss, path):\n2.     is_best = val_loss < best_loss\n3.     if is_best:\n4.         best_loss = val_loss\n5.     torch.save(model.state_dict(), path)\n6.     return best_loss",
+    "labels": [
+      "bug",
+      "ml",
+      "checkpointing"
+    ],
+    "task_level": "medium",
+    "true_label": "bug",
+    "true_bug_line": 5,
+    "true_team": null,
+    "true_fix_keywords": [
+      "indent into if",
+      "save only if best"
+    ]
+  },
+  {
+    "id": "issue-hard-1",
+    "title": "Stored XSS via Markdown rendering bypass",
+    "body": "We allow users to submit markdown, but it renders raw HTML tags because the markdown library's 'safe_mode' is not configured appropriately before injecting into the template.",
+    "code_snippet": "1. import markdown\n2. from flask import render_template, request\n3. \n4. @app.route('/post/<int:id>')\n5. def view_post(id):\n6.     post = db.get_post(id)\n7.     html_content = markdown.markdown(post.content)\n8.     return render_template('post.html', body=html_content)",
+    "labels": [
+      "bug",
+      "security",
+      "frontend"
+    ],
+    "task_level": "hard",
+    "true_label": "bug",
+    "true_bug_line": 7,
+    "true_team": "webdev",
+    "true_fix_keywords": [
+      "bleach",
+      "sanitize",
+      "escape"
+    ]
+  },
+  {
+    "id": "issue-hard-2",
+    "title": "CORS preflight request blocked on wildcard origin with credentials",
+    "body": "Our frontend cannot send authenticated requests. The backend specifies Access-Control-Allow-Origin: * along with Access-Control-Allow-Credentials: true, which is forbidden by browsers.",
+    "code_snippet": "1. @app.after_request\n2. def apply_cors(response):\n3.     response.headers[\"Access-Control-Allow-Origin\"] = \"*\"\n4.     response.headers[\"Access-Control-Allow-Methods\"] = \"GET,POST,OPTIONS\"\n5.     response.headers[\"Access-Control-Allow-Headers\"] = \"Content-Type,Authorization\"\n6.     response.headers[\"Access-Control-Allow-Credentials\"] = \"true\"\n7.     return response",
+    "labels": [
+      "bug",
+      "security",
+      "api"
+    ],
+    "task_level": "hard",
     "true_label": "bug",
     "true_bug_line": 3,
     "true_team": "webdev",
     "true_fix_keywords": [
-      "check if user.avatar",
-      "None",
-      "hasattr"
+      "request.origin",
+      "specific domain",
+      "no wildcard"
     ]
   },
   {
-    "id": "issue-14",
-    "title": "NullReferenceException in UserProfile 4",
-    "body": "Getting exception when viewing a user without an avatar.",
-    "code_snippet": "1. def get_avatar(user):\n2.     if user:\n3.         return user.avatar.url\n4.     return 'default.png'",
+    "id": "issue-hard-3",
+    "title": "Connection leak in reporting endpoint causes timeout over time",
+    "body": "The report generation API fetches data from Postgres but never returns the connection to the pool if a specific validation exception is raised.",
+    "code_snippet": "1. def generate_report(user_id):\n2.     conn = db_pool.getconn()\n3.     try:\n4.         data = fetch_user_data(conn, user_id)\n5.         if not data:\n6.             raise ValueError(\"No data found\")\n7.         return compile_csv(data)\n8.     finally:\n9.         if data is not None:\n10.            db_pool.putconn(conn)",
     "labels": [
-      "backend"
+      "bug",
+      "backend",
+      "performance"
     ],
-    "task_level": "medium",
+    "task_level": "hard",
     "true_label": "bug",
-    "true_bug_line": 3,
+    "true_bug_line": 9,
     "true_team": "webdev",
     "true_fix_keywords": [
-      "check if user.avatar",
-      "None",
-      "hasattr"
+      "always release",
+      "remove if",
+      "putconn"
     ]
   },
   {
-    "id": "issue-15",
-    "title": "NullReferenceException in UserProfile 5",
-    "body": "Getting exception when viewing a user without an avatar.",
-    "code_snippet": "1. def get_avatar(user):\n2.     if user:\n3.         return user.avatar.url\n4.     return 'default.png'",
+    "id": "issue-hard-4",
+    "title": "JWT signature verification disabled if alg is \"none\"",
+    "body": "Our JWT decoder accepts tokens with the 'none' algorithm, permitting an attacker to bypass authentication entirely by dropping the signature and modifying the header.",
+    "code_snippet": "1. import jwt\n2. \n3. def verify_token(token):\n4.     try:\n5.         header = jwt.get_unverified_header(token)\n6.         alg = header.get('alg', 'HS256')\n7.         payload = jwt.decode(token, app.config['SECRET_KEY'], algorithms=[alg])\n8.         return payload\n9.     except jwt.InvalidTokenError:\n10.        return None",
     "labels": [
-      "backend"
+      "bug",
+      "security",
+      "auth"
     ],
-    "task_level": "medium",
+    "task_level": "hard",
     "true_label": "bug",
-    "true_bug_line": 3,
+    "true_bug_line": 7,
     "true_team": "webdev",
     "true_fix_keywords": [
-      "check if user.avatar",
-      "None",
-      "hasattr"
+      "algorithms=['hs256']",
+      "hardcode algorithm",
+      "reject none"
     ]
   },
   {
-    "id": "issue-16",
-    "title": "NullReferenceException in UserProfile 6",
-    "body": "Getting exception when viewing a user without an avatar.",
-    "code_snippet": "1. def get_avatar(user):\n2.     if user:\n3.         return user.avatar.url\n4.     return 'default.png'",
+    "id": "issue-hard-5",
+    "title": "OAuth callback causes infinite redirects for missing users",
+    "body": "If an existing user signs in via SSO, it works. But for a new user, they are redirected to /signup, which unfortunately is protected by the @login_required decorator, bouncing them back to login.",
+    "code_snippet": "1. @app.route('/oauth/callback')\n2. def oauth_callback():\n3.     token = get_sso_token(request)\n4.     user = db.get_user(token.email)\n5.     if not user:\n6.         return redirect('/signup')\n7.     login_user(user)\n8.     return redirect('/dashboard')\n9. \n10. @app.route('/signup')\n11. @login_required\n12. def signup_page():\n13.     return render_template('signup.html')",
     "labels": [
-      "backend"
+      "bug",
+      "frontend",
+      "auth"
     ],
-    "task_level": "medium",
+    "task_level": "hard",
     "true_label": "bug",
-    "true_bug_line": 3,
+    "true_bug_line": 11,
     "true_team": "webdev",
     "true_fix_keywords": [
-      "check if user.avatar",
-      "None",
-      "hasattr"
+      "remove login_required",
+      "public route",
+      "allow anonymous"
     ]
   },
   {
-    "id": "issue-17",
-    "title": "NullReferenceException in UserProfile 7",
-    "body": "Getting exception when viewing a user without an avatar.",
-    "code_snippet": "1. def get_avatar(user):\n2.     if user:\n3.         return user.avatar.url\n4.     return 'default.png'",
+    "id": "issue-hard-6",
+    "title": "Liveness probe continuously restarts Pod due to authentication wall",
+    "body": "We added mandatory JWT authentication to the entire API layer recently. Now Kubernetes kills our application pods every 60 seconds because the liveness probe route requires a Bearer token.",
+    "code_snippet": "1. apiVersion: v1\n2. kind: Pod\n3. metadata:\n4.   name: backend-api\n5. spec:\n6.   containers:\n7.   - name: app\n8.     image: api:v2\n9.     livenessProbe:\n10.      httpGet:\n11.        path: /api/v1/health\n12.        port: 8080\n13.      initialDelaySeconds: 15\n14.      periodSeconds: 60",
     "labels": [
-      "backend"
+      "bug",
+      "kubernetes",
+      "infrastructure"
     ],
-    "task_level": "medium",
+    "task_level": "hard",
+    "true_label": "bug",
+    "true_bug_line": 11,
+    "true_team": "devops",
+    "true_fix_keywords": [
+      "unauthenticated route",
+      "exempt health",
+      "remove auth"
+    ]
+  },
+  {
+    "id": "issue-hard-7",
+    "title": "Tests are bypassed on Main branch deploys",
+    "body": "Our GitHub Actions workflow deploys straight to production if someone commits directly to main, completely bypassing the unit_test job because of a broken logic condition.",
+    "code_snippet": "1. jobs:\n2.   unit_tests:\n3.     if: github.ref != 'refs/heads/main'\n4.     runs-on: ubuntu-latest\n5.     steps:\n6.       - run: make test\n7.   deploy:\n8.     needs: [unit_tests]\n9.     if: always()\n10.    runs-on: ubuntu-latest\n11.    steps:\n12.      - run: make deploy",
+    "labels": [
+      "bug",
+      "ci-cd"
+    ],
+    "task_level": "hard",
+    "true_label": "bug",
+    "true_bug_line": 9,
+    "true_team": "devops",
+    "true_fix_keywords": [
+      "remove always()",
+      "needs test success",
+      "on main push"
+    ]
+  },
+  {
+    "id": "issue-hard-8",
+    "title": "Multi-stage Docker build leaks build tools into production image",
+    "body": "Our final docker image is 1.5GB instead of 50MB. The multi-stage build accidentally copies the entire source and toolchain from the builder phase instead of just the compiled binary.",
+    "code_snippet": "1. FROM golang:1.20 AS builder\n2. WORKDIR /src\n3. COPY . .\n4. RUN go build -o /app/server cmd/main.go\n5. \n6. FROM alpine:latest\n7. WORKDIR /root/\n8. COPY --from=builder /src /root/\n9. CMD [\"./server\"]",
+    "labels": [
+      "bug",
+      "docker",
+      "infrastructure"
+    ],
+    "task_level": "hard",
+    "true_label": "bug",
+    "true_bug_line": 8,
+    "true_team": "devops",
+    "true_fix_keywords": [
+      "copy --from=builder /app/server",
+      "compiled binary"
+    ]
+  },
+  {
+    "id": "issue-hard-9",
+    "title": "Database password baked into image history via ENV",
+    "body": "We pass the DB password as an ARG to avoid hardcoding it in the source. However, attributing it to an ENV variable in the Dockerfile permanently persists the secret in the image layer history.",
+    "code_snippet": "1. FROM node:18\n2. WORKDIR /app\n3. ARG DB_PASS\n4. ENV DATABASE_PASSWORD=$DB_PASS\n5. COPY package*.json .\n6. RUN npm install\n7. COPY . .\n8. CMD [\"node\", \"index.js\"]",
+    "labels": [
+      "bug",
+      "docker",
+      "security"
+    ],
+    "task_level": "hard",
+    "true_label": "bug",
+    "true_bug_line": 4,
+    "true_team": "devops",
+    "true_fix_keywords": [
+      "remove env",
+      "pass at runtime",
+      "secret mount"
+    ]
+  },
+  {
+    "id": "issue-hard-10",
+    "title": "JVM container hit with OOMKilled despite ample Pod resources",
+    "body": "The container orchestrator issues an OOMKilled to our Java Spring Boot app. The memory limit on the Pod is 4Gi, but we didn't specify MaxRAMPercentage for the JVM heap.",
+    "code_snippet": "1. apiVersion: apps/v1\n2. kind: Deployment\n3. spec:\n4.   template:\n5.     spec:\n6.       containers:\n7.       - name: spring-app\n8.         image: my-spring-boot:1.0\n9.         env:\n10.        - name: JAVA_OPTS\n11.          value: \"-Xms512m -XX:+UseG1GC\"\n12.        resources:\n13.          limits:\n14.            memory: \"4Gi\"",
+    "labels": [
+      "bug",
+      "kubernetes",
+      "performance"
+    ],
+    "task_level": "hard",
+    "true_label": "bug",
+    "true_bug_line": 11,
+    "true_team": "devops",
+    "true_fix_keywords": [
+      "-xmaxrampercentage",
+      "-xmx",
+      "heap size"
+    ]
+  },
+  {
+    "id": "issue-hard-11",
+    "title": "HuggingFace transformer pipeline initialized inside infer function",
+    "body": "Inference time is excruciatingly slow (taking ~8 seconds). The system appears to be downloading and loading the multi-gigabyte PyTorch weights from disk for literally every single API request.",
+    "code_snippet": "1. from fastapi import FastAPI\n2. from transformers import pipeline\n3. \n4. app = FastAPI()\n5. \n6. @app.post(\"/predict\")\n7. def predict(text: str):\n8.     classifier = pipeline(\"sentiment-analysis\", model=\"distilbert-base-uncased\")\n9.     return classifier(text)",
+    "labels": [
+      "bug",
+      "ml",
+      "performance"
+    ],
+    "task_level": "hard",
+    "true_label": "bug",
+    "true_bug_line": 8,
+    "true_team": "aiml",
+    "true_fix_keywords": [
+      "global scope",
+      "move outside",
+      "load once"
+    ]
+  },
+  {
+    "id": "issue-hard-12",
+    "title": "CUDA out of memory error during inference loop",
+    "body": "When running evaluation on the test set, we consistently get a CUDA OutOfMemoryError after about 100 batches. This shouldn't happen because we easily fit 1 batch in VRAM.",
+    "code_snippet": "1. def evaluate(model, test_loader):\n2.     model.eval()\n3.     total_loss = 0.0\n4.     for inputs, labels in test_loader:\n5.         inputs, labels = inputs.cuda(), labels.cuda()\n6.         outputs = model(inputs)\n7.         loss = F.cross_entropy(outputs, labels)\n8.         total_loss += loss\n9.     return total_loss / len(test_loader)",
+    "labels": [
+      "bug",
+      "ml",
+      "performance"
+    ],
+    "task_level": "hard",
+    "true_label": "bug",
+    "true_bug_line": 8,
+    "true_team": "aiml",
+    "true_fix_keywords": [
+      "torch.no_grad()",
+      "loss.item()",
+      "computational graph"
+    ]
+  },
+  {
+    "id": "issue-hard-13",
+    "title": "Gradient clipping applied too late in training step",
+    "body": "We added gradient clipping to prevent exploding gradients, but our model still diverges with NaN losses very early in training on sequences.",
+    "code_snippet": "1. def train_step(model, batch, optimizer):\n2.     optimizer.zero_grad()\n3.     loss = model(batch)\n4.     loss.backward()\n5.     optimizer.step()\n6.     torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)\n7.     return loss.item()",
+    "labels": [
+      "bug",
+      "ml",
+      "training"
+    ],
+    "task_level": "hard",
+    "true_label": "bug",
+    "true_bug_line": 6,
+    "true_team": "aiml",
+    "true_fix_keywords": [
+      "before optimizer.step",
+      "move clipping",
+      "before step"
+    ]
+  },
+  {
+    "id": "issue-hard-14",
+    "title": "Word2Vec embeddings identical for all tokens",
+    "body": "Our custom embeddings table is initialized with zeros, and it's staying completely zeroed out during training. Because the initial vectors are identical, the gradients are identical.",
+    "code_snippet": "1. class SimpleEmbedder(nn.Module):\n2.     def __init__(self, vocab_size, embed_dim):\n3.         super().__init__()\n4.         self.embeddings = nn.Parameter(torch.zeros(vocab_size, embed_dim))\n5.     def forward(self, x):\n6.         return self.embeddings[x]",
+    "labels": [
+      "bug",
+      "ml",
+      "architecture"
+    ],
+    "task_level": "hard",
+    "true_label": "bug",
+    "true_bug_line": 4,
+    "true_team": "aiml",
+    "true_fix_keywords": [
+      "torch.randn",
+      "random initialization",
+      "normal distribution"
+    ]
+  },
+  {
+    "id": "issue-hard-15",
+    "title": "Data leakage caused by fitting StandardScaler on entire dataset before split",
+    "body": "Our test set accuracy is suspiciously high (99.9%). I tracked it down to the preprocessing script, where we compute the mean and standard deviation over all data, leaking test distribution into training.",
+    "code_snippet": "1. def prepare_datasets(X_raw, y_raw):\n2.     scaler = StandardScaler()\n3.     X_scaled = scaler.fit_transform(X_raw)\n4.     X_train, X_test, y_train, y_test = train_test_split(X_scaled, y_raw, test_size=0.2)\n5.     return X_train, X_test, y_train, y_test",
+    "labels": [
+      "bug",
+      "ml",
+      "data-processing"
+    ],
+    "task_level": "hard",
     "true_label": "bug",
     "true_bug_line": 3,
-    "true_team": "webdev",
-    "true_fix_keywords": [
-      "check if user.avatar",
-      "None",
-      "hasattr"
-    ]
-  },
-  {
-    "id": "issue-18",
-    "title": "NullReferenceException in UserProfile 8",
-    "body": "Getting exception when viewing a user without an avatar.",
-    "code_snippet": "1. def get_avatar(user):\n2.     if user:\n3.         return user.avatar.url\n4.     return 'default.png'",
-    "labels": [
-      "backend"
-    ],
-    "task_level": "medium",
-    "true_label": "bug",
-    "true_bug_line": 3,
-    "true_team": "webdev",
-    "true_fix_keywords": [
-      "check if user.avatar",
-      "None",
-      "hasattr"
-    ]
-  },
-  {
-    "id": "issue-19",
-    "title": "NullReferenceException in UserProfile 9",
-    "body": "Getting exception when viewing a user without an avatar.",
-    "code_snippet": "1. def get_avatar(user):\n2.     if user:\n3.         return user.avatar.url\n4.     return 'default.png'",
-    "labels": [
-      "backend"
-    ],
-    "task_level": "medium",
-    "true_label": "bug",
-    "true_bug_line": 3,
-    "true_team": "webdev",
-    "true_fix_keywords": [
-      "check if user.avatar",
-      "None",
-      "hasattr"
-    ]
-  },
-  {
-    "id": "issue-20",
-    "title": "NullReferenceException in UserProfile 10",
-    "body": "Getting exception when viewing a user without an avatar.",
-    "code_snippet": "1. def get_avatar(user):\n2.     if user:\n3.         return user.avatar.url\n4.     return 'default.png'",
-    "labels": [
-      "backend"
-    ],
-    "task_level": "medium",
-    "true_label": "bug",
-    "true_bug_line": 3,
-    "true_team": "webdev",
-    "true_fix_keywords": [
-      "check if user.avatar",
-      "None",
-      "hasattr"
-    ]
-  },
-  {
-    "id": "issue-21",
-    "title": "Model inference takes too long 1",
-    "body": "The new transformer model is timing out the API response.",
-    "code_snippet": "1. def predict(text):\n2.     model = load_model()\n3.     inputs = tokenize(text)\n4.     return model(inputs)",
-    "labels": [
-      "performance"
-    ],
-    "task_level": "hard",
-    "true_label": "bug",
-    "true_bug_line": 2,
     "true_team": "aiml",
     "true_fix_keywords": [
-      "cache",
-      "load_model",
-      "global"
-    ]
-  },
-  {
-    "id": "issue-22",
-    "title": "Model inference takes too long 2",
-    "body": "The new transformer model is timing out the API response.",
-    "code_snippet": "1. def predict(text):\n2.     model = load_model()\n3.     inputs = tokenize(text)\n4.     return model(inputs)",
-    "labels": [
-      "performance"
-    ],
-    "task_level": "hard",
-    "true_label": "bug",
-    "true_bug_line": 2,
-    "true_team": "aiml",
-    "true_fix_keywords": [
-      "cache",
-      "load_model",
-      "global"
-    ]
-  },
-  {
-    "id": "issue-23",
-    "title": "Model inference takes too long 3",
-    "body": "The new transformer model is timing out the API response.",
-    "code_snippet": "1. def predict(text):\n2.     model = load_model()\n3.     inputs = tokenize(text)\n4.     return model(inputs)",
-    "labels": [
-      "performance"
-    ],
-    "task_level": "hard",
-    "true_label": "bug",
-    "true_bug_line": 2,
-    "true_team": "aiml",
-    "true_fix_keywords": [
-      "cache",
-      "load_model",
-      "global"
-    ]
-  },
-  {
-    "id": "issue-24",
-    "title": "Model inference takes too long 4",
-    "body": "The new transformer model is timing out the API response.",
-    "code_snippet": "1. def predict(text):\n2.     model = load_model()\n3.     inputs = tokenize(text)\n4.     return model(inputs)",
-    "labels": [
-      "performance"
-    ],
-    "task_level": "hard",
-    "true_label": "bug",
-    "true_bug_line": 2,
-    "true_team": "aiml",
-    "true_fix_keywords": [
-      "cache",
-      "load_model",
-      "global"
-    ]
-  },
-  {
-    "id": "issue-25",
-    "title": "Model inference takes too long 5",
-    "body": "The new transformer model is timing out the API response.",
-    "code_snippet": "1. def predict(text):\n2.     model = load_model()\n3.     inputs = tokenize(text)\n4.     return model(inputs)",
-    "labels": [
-      "performance"
-    ],
-    "task_level": "hard",
-    "true_label": "bug",
-    "true_bug_line": 2,
-    "true_team": "aiml",
-    "true_fix_keywords": [
-      "cache",
-      "load_model",
-      "global"
-    ]
-  },
-  {
-    "id": "issue-26",
-    "title": "Model inference takes too long 6",
-    "body": "The new transformer model is timing out the API response.",
-    "code_snippet": "1. def predict(text):\n2.     model = load_model()\n3.     inputs = tokenize(text)\n4.     return model(inputs)",
-    "labels": [
-      "performance"
-    ],
-    "task_level": "hard",
-    "true_label": "bug",
-    "true_bug_line": 2,
-    "true_team": "aiml",
-    "true_fix_keywords": [
-      "cache",
-      "load_model",
-      "global"
-    ]
-  },
-  {
-    "id": "issue-27",
-    "title": "Model inference takes too long 7",
-    "body": "The new transformer model is timing out the API response.",
-    "code_snippet": "1. def predict(text):\n2.     model = load_model()\n3.     inputs = tokenize(text)\n4.     return model(inputs)",
-    "labels": [
-      "performance"
-    ],
-    "task_level": "hard",
-    "true_label": "bug",
-    "true_bug_line": 2,
-    "true_team": "aiml",
-    "true_fix_keywords": [
-      "cache",
-      "load_model",
-      "global"
-    ]
-  },
-  {
-    "id": "issue-28",
-    "title": "Model inference takes too long 8",
-    "body": "The new transformer model is timing out the API response.",
-    "code_snippet": "1. def predict(text):\n2.     model = load_model()\n3.     inputs = tokenize(text)\n4.     return model(inputs)",
-    "labels": [
-      "performance"
-    ],
-    "task_level": "hard",
-    "true_label": "bug",
-    "true_bug_line": 2,
-    "true_team": "aiml",
-    "true_fix_keywords": [
-      "cache",
-      "load_model",
-      "global"
-    ]
-  },
-  {
-    "id": "issue-29",
-    "title": "Model inference takes too long 9",
-    "body": "The new transformer model is timing out the API response.",
-    "code_snippet": "1. def predict(text):\n2.     model = load_model()\n3.     inputs = tokenize(text)\n4.     return model(inputs)",
-    "labels": [
-      "performance"
-    ],
-    "task_level": "hard",
-    "true_label": "bug",
-    "true_bug_line": 2,
-    "true_team": "aiml",
-    "true_fix_keywords": [
-      "cache",
-      "load_model",
-      "global"
-    ]
-  },
-  {
-    "id": "issue-30",
-    "title": "Model inference takes too long 10",
-    "body": "The new transformer model is timing out the API response.",
-    "code_snippet": "1. def predict(text):\n2.     model = load_model()\n3.     inputs = tokenize(text)\n4.     return model(inputs)",
-    "labels": [
-      "performance"
-    ],
-    "task_level": "hard",
-    "true_label": "bug",
-    "true_bug_line": 2,
-    "true_team": "aiml",
-    "true_fix_keywords": [
-      "cache",
-      "load_model",
-      "global"
+      "fit only on train",
+      "after split",
+      "transform test"
     ]
   }
 ]
