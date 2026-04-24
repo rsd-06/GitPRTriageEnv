@@ -1,7 +1,9 @@
 import json
 import random
 import uuid
-from typing import Dict, Any
+from typing import Any, Dict, List
+
+from server.curriculum import CurriculumSampler
 
 from models import TriageAction, TriageObservation, TriageState
 
@@ -90,12 +92,23 @@ class DevTriageEnvironment:
     def __init__(self):
         with open("data/issues.json", "r") as f:
             self.all_issues = json.load(f)
+
+        # Group issues by difficulty level for the curriculum sampler
+        self._issues_by_level: Dict[str, List[dict]] = {"easy": [], "medium": [], "hard": []}
+        for issue in self.all_issues:
+            lvl = issue.get("task_level", "easy")
+            if lvl in self._issues_by_level:
+                self._issues_by_level[lvl].append(issue)
+
+        # Curriculum sampler replaces random sampling
+        self._curriculum = CurriculumSampler(self._issues_by_level, history_window=10)
+
         self._reset_state()
 
     def _reset_state(self):
         self.episode_id = str(uuid.uuid4())
         self.step_count = 0
-        self._current = random.choice(self.all_issues)
+        self._current = self._curriculum.sample()
 
     def reset(self) -> TriageObservation:
         self._reset_state()
@@ -113,6 +126,8 @@ class DevTriageEnvironment:
     def step(self, action: TriageAction) -> TriageObservation:
         self.step_count += 1
         reward = grade(action.model_dump(), self._current)
+        # Record performance for curriculum phase tracking
+        self._curriculum.record(self._current["task_level"], reward)
         return TriageObservation(
             issue_id=self._current["id"],
             title=self._current["title"],
@@ -132,3 +147,34 @@ class DevTriageEnvironment:
             task_level=self._current["task_level"],
             current_issue_id=self._current["id"]
         )
+
+    def get_curriculum_stats(self) -> dict:
+        """Returns current curriculum progression statistics.
+
+        Used by the /curriculum FastAPI endpoint and for monitoring
+        agent improvement during RL training. Returns the curriculum
+        sampler's full state including current phase, phase weights,
+        recent performance by level, and transition history.
+
+        Returns:
+            dict with keys: current_phase, episode, phase_weights,
+            phase_transitions, recent_performance, history_window,
+            total_episodes_recorded, issue_pool_size
+        """
+        return self._curriculum.get_stats()
+
+    def get_recent_audit(self, n: int = 20) -> list:
+        """Returns the last n episode records from the curriculum history.
+
+        Used by the /audit FastAPI endpoint for reward-hacking detection.
+        Each entry contains level, reward, and episode number.
+
+        Args:
+            n: Number of recent entries to return (default 20, max 50)
+
+        Returns:
+            List of dicts with keys: level, reward, episode
+        """
+        n = min(n, 50)
+        history = list(self._curriculum._history)
+        return history[-n:]

@@ -22,4 +22,4 @@ dependencies = [
 server = "server.app:main"
 
 [tool.setuptools]
-packages = ["server"]
+packages = ["server", "agents"]
