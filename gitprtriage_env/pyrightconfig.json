@@ -1,0 +1,16 @@
+{
+  "venvPath": ".",
+  "venv": ".venv",
+  "pythonVersion": "3.11",
+  "include": [
+    "agents",
+    "server",
+    "inference.py",
+    "models.py"
+  ],
+  "exclude": [
+    ".venv",
+    "dev_triage_env.egg-info",
+    "__pycache__"
+  ]
+}

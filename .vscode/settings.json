@@ -1,0 +1,13 @@
+{
+  "python.defaultInterpreterPath": "C:\\Users\\rsudh\\OneDrive\\Documents\\Projects\\GitPRTriageEnv\\gitprtriage_env\\.venv\\Scripts\\python.exe",
+
+  "python.analysis.extraPaths": [
+    "C:\\Users\\rsudh\\OneDrive\\Documents\\Projects\\GitPRTriageEnv\\gitprtriage_env"
+  ],
+
+  "pyrefly.pythonInterpreter": "C:\\Users\\rsudh\\OneDrive\\Documents\\Projects\\GitPRTriageEnv\\gitprtriage_env\\.venv\\Scripts\\python.exe",
+
+  "python.venvPath": "C:\\Users\\rsudh\\OneDrive\\Documents\\Projects\\GitPRTriageEnv\\gitprtriage_env",
+
+  "python.terminal.activateEnvironment": true
+}
