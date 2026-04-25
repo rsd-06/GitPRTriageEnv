@@ -1,9 +1,11 @@
 import json
 import random
+import time
 import uuid
 from typing import Any, Dict, List
 
 from server.curriculum import CurriculumSampler
+from server.guards import GuardSuite
 
 from models import TriageAction, TriageObservation, TriageState
 
@@ -103,15 +105,20 @@ class DevTriageEnvironment:
         # Curriculum sampler replaces random sampling
         self._curriculum = CurriculumSampler(self._issues_by_level, history_window=10)
 
+        # Anti-reward-hacking guard suite
+        self._guards = GuardSuite()
+
         self._reset_state()
 
     def _reset_state(self):
+        self._step_start: float = time.perf_counter()
         self.episode_id = str(uuid.uuid4())
         self.step_count = 0
         self._current = self._curriculum.sample()
 
     def reset(self) -> TriageObservation:
         self._reset_state()
+        self._step_start = time.perf_counter()  # start timing when agent receives observation
         return TriageObservation(
             issue_id=self._current["id"],
             title=self._current["title"],
@@ -125,7 +132,11 @@ class DevTriageEnvironment:
 
     def step(self, action: TriageAction) -> TriageObservation:
         self.step_count += 1
-        reward = grade(action.model_dump(), self._current)
+        elapsed_ms = (time.perf_counter() - self._step_start) * 1000.0
+        raw_reward = grade(action.model_dump(), self._current)
+        reward, _guard_results = self._guards.evaluate(
+            action.model_dump(), self._current, raw_reward, elapsed_ms
+        )
         # Record performance for curriculum phase tracking
         self._curriculum.record(self._current["task_level"], reward)
         return TriageObservation(
@@ -178,3 +189,30 @@ class DevTriageEnvironment:
         n = min(n, 50)
         history = list(self._curriculum._history)
         return history[-n:]
+
+    def get_guard_summary(self) -> dict:
+        """Returns anti-reward-hacking guard statistics.
+
+        Exposes the GuardSuite's summary including total penalties applied,
+        penalty rate, fast response rate, and descriptions of each guard.
+        Used by the /guards FastAPI endpoint.
+
+        Returns:
+            dict with keys: total_episodes, total_penalties_applied,
+            penalty_rate, fast_response_rate, guards
+        """
+        return self._guards.get_summary()
+
+    def get_guard_audit(self, n: int = 20) -> list:
+        """Returns recent guard firing log entries.
+
+        Each entry contains episode number, original vs adjusted reward,
+        penalty multiplier, and which guards triggered and why.
+
+        Args:
+            n: Number of recent entries to return (default 20)
+
+        Returns:
+            List of guard audit dicts
+        """
+        return self._guards.get_audit_log(n)

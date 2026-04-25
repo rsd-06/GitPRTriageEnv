@@ -170,6 +170,46 @@ def agents_info():
         },
     }
 
+@app.get("/guards")
+def guard_summary():
+    """Anti-reward-hacking guard suite statistics.
+
+    Returns a summary of all reward-hacking detection activity:
+    - total_episodes: how many episodes have been evaluated
+    - total_penalties_applied: how many times a guard fired
+    - penalty_rate: fraction of episodes where reward was adjusted
+    - fast_response_rate: fraction of responses under 200ms threshold
+    - guards: description of each active guard
+
+    A rising penalty_rate during RL training is a healthy sign —
+    it means the guards are catching exploitation attempts.
+    """
+    return env.get_guard_summary()
+
+
+@app.get("/guards/audit")
+def guard_audit(n: int = 20):
+    """Recent guard firing log — shows reward adjustments in detail.
+
+    Each entry shows:
+    - episode: episode number when guard fired
+    - original_reward: reward before guard penalties
+    - adjusted_reward: reward after guard penalties
+    - penalty_multiplier: the combined penalty factor applied
+    - guards_triggered: list of guard names that fired
+    - reasons: human-readable explanation for each guard firing
+
+    Example of keyword stuffing being caught:
+      original_reward: 0.999 → adjusted_reward: 0.499
+      guard: KeywordStuffingDetector
+      reason: Fix keyword density 0.67 exceeds 0.40 threshold
+
+    Args:
+        n: Number of recent entries (default 20)
+    """
+    return env.get_guard_audit(n)
+
+
 import uvicorn
 
 
