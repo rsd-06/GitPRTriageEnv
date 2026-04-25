@@ -1,10 +1,14 @@
 import sys
+import os
 import json
 import re
 
-sys.path.insert(0, "prevaluation_env")
-from client import DevTriageClient
-from inference import parse_action
+_env_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "prevaluation_env"))
+if _env_path not in sys.path:
+    sys.path.insert(0, _env_path)
+
+from prevaluation_env.client import DevTriageClient
+from prevaluation_env.inference import parse_action
 
 
 def compute_env_reward(completions: list[str], pr_ids: list[str], **kwargs) -> list[float]:

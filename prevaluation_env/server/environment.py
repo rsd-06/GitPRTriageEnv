@@ -1,11 +1,12 @@
 import json
 import time
 import uuid
+from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
-from server.curriculum import CurriculumSampler
-from server.guards import GuardSuite
-from models import ReviewAction, ReviewObservation, ReviewState
+from .curriculum import CurriculumSampler
+from .guards import GuardSuite
+from ..models import ReviewAction, ReviewObservation, ReviewState
 
 
 # ---------------------------------------------------------------------------
@@ -181,12 +182,19 @@ def grade(action: dict, truth: dict) -> Tuple[float, dict]:
 
 class PRRegressionAuditEnvironment:
     def __init__(self):
-        try:
-            with open("data/prs.json", "r") as f:
-                self.all_prs = json.load(f)
-        except FileNotFoundError:
-            print("Warning: data/prs.json not found. Environment will have no PRs.")
+        data_candidates = [
+            Path(__file__).resolve().parents[1] / "data" / "prs.json",
+            Path("data/prs.json"),
+            Path("prevaluation_env/data/prs.json"),
+        ]
+        data_path = next((p for p in data_candidates if p.exists()), None)
+
+        if data_path is None:
+            print("Warning: prs.json not found. Environment will have no PRs.")
             self.all_prs = []
+        else:
+            with data_path.open("r", encoding="utf-8") as f:
+                self.all_prs = json.load(f)
 
         # Group PRs by difficulty for curriculum sampler
         self._prs_by_level: Dict[str, List[dict]] = {"easy": [], "medium": [], "hard": []}

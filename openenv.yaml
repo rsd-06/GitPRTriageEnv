@@ -1,0 +1,39 @@
+name: pr_regression_audit_env
+version: "2.0.0"
+description: >
+  Automated PR Regression Auditor — an RL environment where agents detect
+  accidental regressions introduced in Pull Requests. PR descriptions describe
+  the intended feature; the proposed code secretly contains an unrelated defect.
+  Three progressively harder tasks test binary safety gating, static defect
+  localization, and cross-context integration analysis with reviewer routing.
+tasks:
+  - id: task_easy
+    name: PR Safety Gate
+    difficulty: easy
+    description: >
+      Approve clean PRs or flag obvious blockers (debug_output, hardcoded_secret,
+      do_not_merge_comment, debug_test_bypass, syntax_error). Two-component reward:
+      review_decision (0.55) + blocker_type (0.45). Dataset: 6 clean + 9 flagged.
+  - id: task_medium
+    name: Regression Localization
+    difficulty: medium
+    description: >
+      Static defect analysis — identify the defect category (security/logic/performance)
+      and the exact 1-indexed faulty line in proposed_code. Partial credit for ±1 line
+      proximity. All medium PRs contain a self-contained defect requiring no external context.
+  - id: task_hard
+    name: Full Audit and Integration Review
+    difficulty: hard
+    description: >
+      Integration defect analysis — proposed_code looks correct in isolation, but a
+      context_snippet (existing code/config) reveals a compatibility regression.
+      Five-component reward: review_decision + defect_category + faulty_line +
+      reviewer_team (infosec/devops/core-frontend/core-sysdev/aiml) + suggested_change
+      (keyword-checked, under 200 chars).
+author: SaiSanjayR
+tags:
+  - openenv
+  - code-review
+  - regression-detection
+  - multi-agent
+  - developer-tools
