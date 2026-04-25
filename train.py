@@ -193,7 +193,7 @@ def main():
     model.print_trainable_parameters()
 
     print("Loading dataset...")
-    dataset = load_dataset("rsd-06/pr-regression-audit-grpo", split="train")
+    dataset = load_dataset("SaiSanjayR/pr-regression-audit-grpo", split="train")
     print(f"  {len(dataset)} samples")
     print("  Columns:", dataset.column_names)  # confirm pr_id is present
 
@@ -225,8 +225,8 @@ def main():
 
     model.save_pretrained("evaluation/checkpoints/final_adapter/")
     tokenizer.save_pretrained("evaluation/checkpoints/final_adapter/")
-    model.push_to_hub("rsd-06/pr-regression-audit-grpo-adapter")
-    tokenizer.push_to_hub("rsd-06/pr-regression-audit-grpo-adapter")
+    model.push_to_hub("SaiSanjayR/pr-triage-grpo-adapter")
+    tokenizer.push_to_hub("SaiSanjayR/pr-triage-grpo-adapter")
     
     # Evaluate and print JSON stats for the React UI
     try:

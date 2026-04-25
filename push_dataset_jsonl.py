@@ -10,7 +10,7 @@ from inference import SYSTEM_PROMPT, _build_prompt
 def build_and_push():
     data_path = os.path.join("prevaluation_env", "data", "prs.json")
     output_path = "grpo_dataset.jsonl"
-    repo_id = "rsd-06/pr-regression-audit-grpo"
+    repo_id = "SaiSanjayR/pr-regression-audit-grpo"
     
     with open(data_path, "r", encoding="utf-8") as f:
         pr_list = json.load(f)
