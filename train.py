@@ -29,7 +29,11 @@ url = 'https://huggingface.co/spaces/rsd-06/PRRegressionAuditEnv/resolve/main/pr
 resp = requests.get(url)
 PR_TRUTH = {pr["id"]: pr for pr in resp.json()}
 
-def parse_action(raw: str) -> dict:
+def parse_action(raw) -> dict:
+    if isinstance(raw, list):
+        raw = raw[-1]["content"] if len(raw) > 0 and isinstance(raw[-1], dict) else str(raw)
+    elif not isinstance(raw, str):
+        raw = str(raw)
     text = re.sub(r"```json\s*", "", raw)
     text = re.sub(r"```\s*", "", text).strip()
     match = re.search(r"\{.*\}", text, re.DOTALL)
@@ -121,10 +125,14 @@ def compute_env_reward(completions: list[str], pr_ids: list[str], **kwargs) -> l
             rewards.append(0.001)
     return rewards
 
-def compute_format_reward(completions: list[str], **kwargs) -> list[float]:
+def compute_format_reward(completions, **kwargs) -> list[float]:
     rewards = []
     for comp in completions:
         try:
+            if isinstance(comp, list):
+                comp = comp[-1]["content"] if len(comp) > 0 and isinstance(comp[-1], dict) else str(comp)
+            elif not isinstance(comp, str):
+                comp = str(comp)
             text = re.sub(r"```json\s*", "", comp)
             text = re.sub(r"```\s*", "", text).strip()
             match = re.search(r"\{.*\}", text, re.DOTALL)

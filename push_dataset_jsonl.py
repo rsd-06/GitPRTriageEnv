@@ -32,7 +32,7 @@ def build_and_push():
 
     print(f"Saved JSONL to {output_path}. Pushing to Hugging Face Hub...")
     
-    api = HfApi()
+    api = HfApi(token=os.getenv("HF_TOKEN"))
     
     # Create repo if it doesn't exist
     api.create_repo(repo_id=repo_id, repo_type="dataset", private=True, exist_ok=True)
