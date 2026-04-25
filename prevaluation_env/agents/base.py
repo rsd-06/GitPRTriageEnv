@@ -50,7 +50,7 @@ class AgentResult:
 # ---------------------------------------------------------------------------
 
 class BaseAgent(ABC):
-    """Abstract base for every triage agent in the GitPRTriageEnv system.
+    """Abstract base for every triage agent in the PREvaluationEnv system.
 
     Subclasses must implement:
         - ``name``            – a display name property

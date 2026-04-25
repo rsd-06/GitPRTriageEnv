@@ -1,7 +1,7 @@
 """
 server/curriculum.py
 --------------------
-Adaptive curriculum sampler for the GitPRTriageEnv RL environment.
+Adaptive curriculum sampler for the PREvaluationEnv RL environment.
 
 The CurriculumSampler maintains a three-phase difficulty progression:
 
