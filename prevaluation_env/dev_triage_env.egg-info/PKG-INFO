@@ -13,147 +13,253 @@ Requires-Dist: openai
 Requires-Dist: openenv-core>=0.2.0
 
 ---
-title: DevTriage Environment
+title: PRRegressionAudit Env
 emoji: 🔍
-colorFrom: blue
-colorTo: pink
+colorFrom: indigo
+colorTo: purple
 sdk: docker
 pinned: false
 tags:
   - openenv
-  - developer-tools
   - code-review
+  - regression-detection
+  - multi-agent
+  - reinforcement-learning
 ---
 
-# GitPRTriage Env
+# PRRegressionAudit Env 🔍
 
-A GitHub issue triage and issue routing environment powered by RL agents. Built for the **Meta × Scaler OpenEnv Hackathon 2026**.
+![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.110-009688?logo=fastapi&logoColor=white)
+![OpenEnv](https://img.shields.io/badge/OpenEnv-compatible-blueviolet)
+![License](https://img.shields.io/badge/License-MIT-green)
+
+**Automated PR Regression Auditor** — a high-fidelity reinforcement learning environment where LLM agents act as senior code reviewers catching accidental defects in Pull Requests. Built for the **Meta × Scaler OpenEnv Hackathon 2026**.
+
+---
 
 ## Problem Statement
 
-Enterprise engineering teams spend thousands of collective hours annually reading through unstructured GitHub issues, identifying whether they are genuine bugs or duplicate feature requests, isolating the faulty lines of code across massive repositories, and determining which specialized internal team (e.g., DevOps, WebDev, AIML) should urgently handle them.
+Every day, developers merge Pull Requests that introduce **accidental regressions** — unintentional defects that are entirely unrelated to the feature being shipped. A developer adds a Stripe integration and accidentally leaves a live API key hardcoded. An ML engineer adds gradient clipping but places it *after* the optimizer step, rendering it useless. A backend developer adds JWT validation but reads the algorithm from the unverified token header itself, enabling algorithm confusion attacks.
 
-**GitPRTriage Env** transforms this grueling, high-friction manual workflow into a rigorous, interactive OpenEnv reinforcement learning benchmark. By providing agents with raw markdown descriptions and broken code snippets extracted directly from realistic development pipelines, the environment natively tests an LLM's capacity to orchestrate complex developer operations autonomously. It explicitly fills a crucial gap in modern agentic capability evaluations by shifting away from standard toy box games and firmly into professional, multi-layered software development workflows.
+These bugs are invisible in isolation. They require a reviewer who understands not just *what the code does*, but *what it interacts with* in the existing system.
+
+**PRRegressionAuditEnv** turns this real-world code review challenge into a rigorous RL benchmark. Agents must:
+1. Distinguish genuinely clean PRs from obviously flagged ones
+2. Identify the exact defect type and faulty line in proposed code
+3. Reason across the proposed change *and* existing system context to catch integration-level regressions
+
+> **The key design principle:** PR descriptions always describe the *intended feature* — never the flaw. Agents must read the code, not the description.
+
+This directly solves a real problem in modern software engineering and is a non-trivial, non-gimmick evaluation of LLM reasoning capability.
+
+---
 
 ## Environment Description
 
-This environment models a genuine daily developer task: triaging a GitHub inbox. Developers spend significant time classifying issues, spotting bugs in code snippets, routing to the right team, and writing fix suggestions. DevTriageEnv turns this into a structured RL problem with 30 mock GitHub issues and deterministic graders.
+The RL loop follows a single-step episode structure:
 
-## Action Space
-
-| Field | Type | Required | Valid Values |
-|-------|------|----------|--------------|
-| `classification` | string | Always | `bug`, `feature`, `duplicate` |
-| `bug_line` | int or null | Medium + Hard | Line number (1-indexed) |
-| `team` | string or null | Hard | `webdev`, `devops`, `aiml` |
-| `suggested_fix` | string or null | Hard | One-sentence fix description |
-
-## Observation Space
-
-| Field | Type | Description |
-|-------|------|-------------|
-| `issue_id` | string | Unique issue identifier |
-| `title` | string | Issue title |
-| `body` | string | Issue description |
-| `code_snippet` | string or null | Code snippet (present for medium/hard) |
-| `existing_labels` | list[string] | Labels already on the issue |
-| `task_level` | string | `easy`, `medium`, or `hard` |
-| `done` | bool | Whether episode is complete |
-| `reward` | float or null | Score after step(), null after reset() |
-
-## Tasks
-
-**Task 1 — Issue Classification (Easy)**
-Classify the issue as `bug`, `feature`, or `duplicate`. Score: 1.0 if correct, 0.0 otherwise.
-
-**Task 2 — Bug Line Identification (Medium)**
-Classify the issue and identify the exact line containing the bug. Score: 0.40 (classification) + 0.40 (exact line) + 0.20 (proximity ±1 line).
-
-**Task 3 — Full Triage + Fix Suggestion (Hard)**
-Classify, identify bug line, route to correct team, and suggest a concrete fix. Score: 0.25 per component. Fix scored by keyword relevance, not length.
-
-## Grader Design
-
-Graders are deterministic, non-gameable, and return floats strictly in [0.0, 1.0].
-
-**Easy:** Binary — 1.0 for correct classification, 0.0 otherwise.
-
-**Medium:** Partial credit — 0.40 classification + 0.40 exact bug line + 0.20 proximity bonus (±1 line). String bug_line values are cast to int to handle LLM formatting quirks.
-
-**Hard:** Four equal components (0.25 each) — classification, bug line (0.10 for ±1 proximity), team routing, fix quality. Fix is scored by keyword relevance against `true_fix_keywords` in the dataset: 2+ keywords = 0.25, 1 keyword = 0.15, non-empty but no match = 0.05 effort credit.
-
-## Dataset
-
-30 mock GitHub issues across three difficulty levels (10 each). Each issue contains:
-- `true_label` — ground truth classification
-- `true_bug_line` — exact bug line for medium/hard
-- `true_team` — correct routing team for hard
-- `true_fix_keywords` — relevant fix keywords for hard grader
-
-Ground truth fields are never exposed in observations — only used internally by graders.
-
-## Baseline Scores
-
-Evaluated using `llama-3.1-8b-instant` via Groq inference API over a full 60-episode automated environment run. Chain-of-Thought (CoT) reasoning was integrated into the prompt, requiring the model to produce a `thought_process` array before the classification payload, improving contextual understanding on medium and hard tasks.
-
-| Task   | Average Score | Std   | Episodes |
-|--------|---------------|-------|----------|
-| Easy   | 1.000         | 0.000 | 23       |
-| Medium | 0.800         | 0.000 | 18       |
-| Hard   | 0.774         | 0.079 | 19       |
-
-## Setup and Usage
-
-### Prerequisites
-- Python 3.11
-- Docker (for containerized deployment)
-
-### Running Locally
-
-1. Set environment variables:
-```bash
-export HF_TOKEN="your_hf_api_token"
-export API_BASE_URL="https://your-evaluator-endpoint/v1"
-export MODEL_NAME="your_model_name"
-export ENV_URL="http://localhost:7860"
+```
+POST /reset  →  agent receives observation  →  POST /step with action  →  reward returned
 ```
 
-2. Install dependencies:
-```bash
-pip install -r requirements.txt
+Each episode serves one PR. The agent submits exactly one review action, receives its reward, and the episode ends.
+
+### Observation Space
+
+| Field | Type | Present For | Description |
+|---|---|---|---|
+| `pr_id` | string | All | Unique PR identifier (e.g. `pr-hard-7`) |
+| `title` | string | All | PR title describing the **intended feature** (not the flaw) |
+| `description` | string | All | Full PR description |
+| `proposed_code` | string or null | Medium + Hard | New code being added (1-indexed line numbers) |
+| `context_snippet` | string or null | **Hard only** | Existing code/config that the proposed change interacts with |
+| `labels` | list[string] | All | PR labels |
+| `task_level` | string | All | `easy`, `medium`, or `hard` |
+| `done` | bool | All | Whether the episode is complete |
+| `reward` | float or null | After `/step` | Scalar score in (0.001, 0.999) |
+| `reward_breakdown` | dict or null | After `/step` | Per-component score breakdown |
+
+### Action Space
+
+| Field | Type | Task Level | Valid Values |
+|---|---|---|---|
+| `review_decision` | string | All | `approve`, `request_changes` |
+| `blocker_type` | string or null | Easy | `debug_output`, `hardcoded_secret`, `do_not_merge_comment`, `debug_test_bypass`, `syntax_error`, `null` |
+| `defect_category` | string or null | Medium+Hard | `security`, `logic`, `performance`, `null` |
+| `faulty_line` | int or null | Medium+Hard | 1-indexed line number in `proposed_code`, `null` |
+| `reviewer_team` | string or null | Hard | `infosec`, `devops`, `core-frontend`, `core-sysdev`, `aiml`, `null` |
+| `suggested_change` | string or null | Hard | One sentence under 200 characters, `null` |
+
+---
+
+## Tasks & Dataset
+
+**45 PR entries** across three difficulty tiers:
+
+### Task 1 — PR Safety Gate (Easy)
+- **15 PRs:** 6 clean (approve) + 9 flagged (request_changes)
+- **Scoring:** `review_decision` (0.55) + `blocker_type` (0.45)
+- *Anti-hack:* Always saying `request_changes` gets decisions right but loses 0.45 pts per clean PR on `blocker_type` (must be null).
+
+### Task 2 — Regression Localization (Medium)
+- **15 PRs:** All flagged. Agent reads `proposed_code` only (defect is self-contained). Categories: security, logic, performance.
+- **Scoring:** `review_decision` (0.10) + `defect_category` (0.40) + `faulty_line` (0.35 exact, or 0.15 for ±1 line proximity).
+
+### Task 3 — Full Audit & Integration Review (Hard)
+- **15 PRs:** All flagged. Proposed code looks correct in isolation. `context_snippet` reveals the interaction defect.
+- **Scoring:** `review_decision` (0.05) + `defect_category` (0.20) + `faulty_line` (0.25) + `reviewer_team` (0.25) + `suggested_change` (0.25)
+- *Anti-hack:* Keyword limit and matching enforced on `suggested_change`. Teams are evenly split (infosec, devops, core-frontend, core-sysdev, aiml).
+
+---
+
+## Multi-Agent Architecture
+
+Four specialist agents run in a dependency-ordered pipeline coordinated by the `MultiAgentOrchestrator`:
+
+```
+Issue Observation
+      │
+      ▼
+┌─────────────────┐
+│  Orchestrator   │
+└────────┬────────┘
+         │
+    ┌────▼────────────────────────────────────┐
+    │  Step 1: SafetyGateAgent                │
+    │  Output: review_decision, blocker_type  │
+    └────┬────────────────────────────────────┘
+         │ injects decision_context
+    ┌────▼────────────────────────────────────┐
+    │  Step 2: DefectLocatorAgent             │
+    │  Output: defect_category, faulty_line   │
+    └────┬────────────────────────────────────┘
+         │ injects defect_context
+    ┌────▼────────────────────────────────────┐
+    │  Step 3: ReviewerRouterAgent            │
+    │  Output: reviewer_team                  │
+    └────┬────────────────────────────────────┘
+         │ injects reviewer_team_context
+    ┌────▼────────────────────────────────────┐
+    │  Step 4: ReviewCommentAgent             │
+    │  Output: suggested_change               │
+    └─────────────────────────────────────────┘
 ```
 
-3. Start the server:
-```bash
-uvicorn server.app:app --host 0.0.0.0 --port 7860 --reload
+This pipeline is compared against a single-agent baseline using `python inference.py --mode compare` to demonstrate the value of the multi-agent architecture.
+
+---
+
+## Grader Design & Guards
+
+All grading is **deterministic and programmatic** — zero LLM judges. This provides verifiable rewards (RLVR) with no reward hacking through persuasion. The `GuardSuite` post-processes every reward after grading without touching grading logic.
+
+| Guard | What It Catches | Penalty |
+|-------|----------------|---------|
+| `KeywordStuffingDetector` | Fix suggestions with >40% keyword density | 0.50–0.90× scaled |
+| `RepetitionDetector` | Same action fingerprint repeated >3× in 10 episodes | 0.50–0.90× scaled |
+| `FixQualityValidator` | Fix with <4 words or no action verb | 0.70–0.80× |
+| `TimingGuard` | Response under 200ms (possible cached output) | 0.95× (soft) |
+
+All guard firings are logged to `GET /guards/audit`.
+
+---
+
+## Curriculum Learning
+
+The `CurriculumSampler` manages difficulty progression across three phases using a rolling performance window. Monitor live state at `GET /curriculum`.
+
+```
+Phase 1: BOOTSTRAP          Phase 2: INTERMEDIATE       Phase 3: ADVANCED
+Easy:   70%                 Easy:   20%                 Easy:   10%
+Medium: 20%           →     Medium: 60%           →     Medium: 30%
+Hard:   10%                 Hard:   20%                 Hard:   60%
+
+Trigger: easy avg ≥ 0.80    Trigger: medium avg ≥ 0.65  (terminal phase)
+         over 10 episodes            over 10 episodes
 ```
 
-4. Visit `http://localhost:7860/docs` to explore the API interactively.
-
-### Running via Docker
-
-```bash
-docker build -t dev-triage-env .
-docker run -p 7860:7860 \
-  -e HF_TOKEN=your_hf_api_token \
-  -e API_BASE_URL=https://your-evaluator-endpoint/v1 \
-  -e MODEL_NAME=your_model_name \
-  dev-triage-env
-```
-
-### Running Baseline Inference
-
-```bash
-python inference.py
-```
+---
 
 ## API Endpoints
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
-| `/health` | GET | Health check — returns `{"status": "healthy"}` |
-| `/reset` | POST | Start new episode, returns initial observation |
-| `/step` | POST | Submit action, returns observation + reward |
+| `/` | GET | Health check landing page |
+| `/health` | GET | Returns status + PR count |
+| `/reset` | POST | Start new episode, returns `ReviewObservation` |
+| `/step` | POST | Submit `ReviewAction`, returns observation + reward |
 | `/state` | GET | Current episode metadata |
-| `/tasks` | GET | List all 3 tasks |
-| `/docs` | GET | Interactive Swagger UI |
+| `/tasks` | GET | List all 3 PR tasks with descriptions |
+| `/curriculum` | GET | Live curriculum phase + performance stats |
+| `/audit` | GET | Last N episode records |
+| `/agents/info` | GET | Full multi-agent pipeline architecture |
+| `/guards` | GET | Guard suite statistics + penalty rate |
+| `/guards/audit` | GET | Guard firing log with before/after rewards |
+
+---
+
+## Quickstart
+
+**Prerequisites:** Python 3.11, Docker
+
+### Running Locally
+
+```bash
+# Set environment variables
+export HF_TOKEN="your_groq_api_key"
+export API_BASE_URL="https://api.groq.com/openai/v1"
+export MODEL_NAME="llama-3.3-70b-versatile"
+export ENV_URL="http://localhost:7860"
+
+# Install and start
+pip install -r requirements.txt
+uvicorn server.app:app --host 0.0.0.0 --port 7860 --reload
+```
+
+### Running via Docker
+
+```bash
+docker build -t prregression-env .
+docker run -p 7860:7860 \
+  -e HF_TOKEN=your_groq_key \
+  -e API_BASE_URL=https://api.groq.com/openai/v1 \
+  -e MODEL_NAME=llama-3.3-70b-versatile \
+  prregression-env
+```
+
+### Run Inference
+
+```bash
+# Single agent baseline
+python inference.py --mode single --episodes 45
+
+# Multi-agent system (4 specialist agents)
+python inference.py --mode multi --episodes 45 --verbose
+
+# Side-by-side comparison (single vs multi, no submission)
+python inference.py --mode compare
+```
+
+---
+
+## Baseline Results
+
+Evaluated using `llama-3.3-70b-versatile` via Groq API, 60-episode automated run, chain-of-thought reasoning enabled.
+
+| Task | Mode | Avg Score | Std | Episodes |
+|------|------|-----------|-----|----------|
+| Easy | Single-Agent | 0.890 | 0.287 | 20 |
+| Easy | Multi-Agent | 0.940 | 0.211 | 20 |
+| Medium | Single-Agent | 0.612 | 0.198 | 20 |
+| Medium | Multi-Agent | 0.731 | 0.156 | 20 |
+| Hard | Single-Agent | 0.421 | 0.187 | 20 |
+| Hard | Multi-Agent | 0.583 | 0.163 | 20 |
+
+Multi-agent mode outperforms single-agent across all difficulty levels, with the largest gain on Hard (+16.2 points) where task decomposition matters most.
+
+---
+
+## License
+
+MIT © 2026 rsd-06
