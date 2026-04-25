@@ -1,0 +1,13 @@
+{
+  "total_count": 100,
+  "count_by_task_level": {
+    "easy": 33,
+    "medium": 33,
+    "hard": 34
+  },
+  "column_names": [
+    "prompt",
+    "pr_id",
+    "task_level"
+  ]
+}

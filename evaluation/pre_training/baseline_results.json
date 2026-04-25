@@ -1,0 +1,1579 @@
+[
+  {
+    "episode_number": 1,
+    "pr_id": "pr-hard-2",
+    "task_level": "hard",
+    "reward": 0.05,
+    "reward_breakdown": {
+      "review_decision": 0.05,
+      "defect_category": 0.0,
+      "faulty_line": 0.0,
+      "reviewer_team": 0.0,
+      "suggested_change": 0.0
+    }
+  },
+  {
+    "episode_number": 2,
+    "pr_id": "pr-easy-14",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 3,
+    "pr_id": "pr-easy-1",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 4,
+    "pr_id": "pr-easy-31",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 5,
+    "pr_id": "pr-easy-21",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 6,
+    "pr_id": "pr-easy-9",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 7,
+    "pr_id": "pr-easy-21",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 8,
+    "pr_id": "pr-easy-7",
+    "task_level": "easy",
+    "reward": 0.999,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.45
+    }
+  },
+  {
+    "episode_number": 9,
+    "pr_id": "pr-medium-21",
+    "task_level": "medium",
+    "reward": 0.4,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "defect_category": 0.4,
+      "faulty_line": 0.0
+    }
+  },
+  {
+    "episode_number": 10,
+    "pr_id": "pr-easy-9",
+    "task_level": "easy",
+    "reward": 0.45,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.45
+    }
+  },
+  {
+    "episode_number": 11,
+    "pr_id": "pr-medium-20",
+    "task_level": "medium",
+    "reward": 0.15,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "defect_category": 0.0,
+      "faulty_line": 0.15
+    }
+  },
+  {
+    "episode_number": 12,
+    "pr_id": "pr-hard-3",
+    "task_level": "hard",
+    "reward": 0.05,
+    "reward_breakdown": {
+      "review_decision": 0.05,
+      "defect_category": 0.0,
+      "faulty_line": 0.0,
+      "reviewer_team": 0.0,
+      "suggested_change": 0.0
+    }
+  },
+  {
+    "episode_number": 13,
+    "pr_id": "pr-easy-33",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 14,
+    "pr_id": "pr-easy-14",
+    "task_level": "easy",
+    "reward": 0.999,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.45
+    }
+  },
+  {
+    "episode_number": 15,
+    "pr_id": "pr-hard-33",
+    "task_level": "hard",
+    "reward": 0.15,
+    "reward_breakdown": {
+      "review_decision": 0.05,
+      "defect_category": 0.0,
+      "faulty_line": 0.1,
+      "reviewer_team": 0.0,
+      "suggested_change": 0.0
+    }
+  },
+  {
+    "episode_number": 16,
+    "pr_id": "pr-medium-23",
+    "task_level": "medium",
+    "reward": 0.25,
+    "reward_breakdown": {
+      "review_decision": 0.1,
+      "defect_category": 0.0,
+      "faulty_line": 0.15
+    }
+  },
+  {
+    "episode_number": 17,
+    "pr_id": "pr-hard-26",
+    "task_level": "hard",
+    "reward": 0.3,
+    "reward_breakdown": {
+      "review_decision": 0.05,
+      "defect_category": 0.0,
+      "faulty_line": 0.25,
+      "reviewer_team": 0.0,
+      "suggested_change": 0.0
+    }
+  },
+  {
+    "episode_number": 18,
+    "pr_id": "pr-easy-26",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 19,
+    "pr_id": "pr-easy-8",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 20,
+    "pr_id": "pr-easy-15",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 21,
+    "pr_id": "pr-easy-1",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 22,
+    "pr_id": "pr-easy-26",
+    "task_level": "easy",
+    "reward": 0.45,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.45
+    }
+  },
+  {
+    "episode_number": 23,
+    "pr_id": "pr-easy-1",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 24,
+    "pr_id": "pr-easy-14",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 25,
+    "pr_id": "pr-medium-21",
+    "task_level": "medium",
+    "reward": 0.4,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "defect_category": 0.4,
+      "faulty_line": 0.0
+    }
+  },
+  {
+    "episode_number": 26,
+    "pr_id": "pr-easy-12",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 27,
+    "pr_id": "pr-hard-4",
+    "task_level": "hard",
+    "reward": 0.05,
+    "reward_breakdown": {
+      "review_decision": 0.05,
+      "defect_category": 0.0,
+      "faulty_line": 0.0,
+      "reviewer_team": 0.0,
+      "suggested_change": 0.0
+    }
+  },
+  {
+    "episode_number": 28,
+    "pr_id": "pr-easy-20",
+    "task_level": "easy",
+    "reward": 0.45,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.45
+    }
+  },
+  {
+    "episode_number": 29,
+    "pr_id": "pr-easy-4",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 30,
+    "pr_id": "pr-hard-10",
+    "task_level": "hard",
+    "reward": 0.15,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "defect_category": 0.0,
+      "faulty_line": 0.1,
+      "reviewer_team": 0.0,
+      "suggested_change": 0.05
+    }
+  },
+  {
+    "episode_number": 31,
+    "pr_id": "pr-easy-1",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 32,
+    "pr_id": "pr-easy-8",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 33,
+    "pr_id": "pr-medium-19",
+    "task_level": "medium",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "defect_category": 0.0,
+      "faulty_line": 0.0
+    }
+  },
+  {
+    "episode_number": 34,
+    "pr_id": "pr-hard-16",
+    "task_level": "hard",
+    "reward": 0.25,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "defect_category": 0.0,
+      "faulty_line": 0.0,
+      "reviewer_team": 0.25,
+      "suggested_change": 0.0
+    }
+  },
+  {
+    "episode_number": 35,
+    "pr_id": "pr-easy-15",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 36,
+    "pr_id": "pr-easy-10",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 37,
+    "pr_id": "pr-easy-24",
+    "task_level": "easy",
+    "reward": 0.45,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.45
+    }
+  },
+  {
+    "episode_number": 38,
+    "pr_id": "pr-easy-28",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 39,
+    "pr_id": "pr-easy-21",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 40,
+    "pr_id": "pr-easy-13",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 41,
+    "pr_id": "pr-medium-10",
+    "task_level": "medium",
+    "reward": 0.25,
+    "reward_breakdown": {
+      "review_decision": 0.1,
+      "defect_category": 0.0,
+      "faulty_line": 0.15
+    }
+  },
+  {
+    "episode_number": 42,
+    "pr_id": "pr-easy-33",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 43,
+    "pr_id": "pr-easy-27",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 44,
+    "pr_id": "pr-easy-12",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 45,
+    "pr_id": "pr-easy-27",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 46,
+    "pr_id": "pr-medium-26",
+    "task_level": "medium",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "defect_category": 0.0,
+      "faulty_line": 0.0
+    }
+  },
+  {
+    "episode_number": 47,
+    "pr_id": "pr-easy-31",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 48,
+    "pr_id": "pr-medium-13",
+    "task_level": "medium",
+    "reward": 0.1,
+    "reward_breakdown": {
+      "review_decision": 0.1,
+      "defect_category": 0.0,
+      "faulty_line": 0.0
+    }
+  },
+  {
+    "episode_number": 49,
+    "pr_id": "pr-easy-2",
+    "task_level": "easy",
+    "reward": 0.999,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.45
+    }
+  },
+  {
+    "episode_number": 50,
+    "pr_id": "pr-easy-23",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 51,
+    "pr_id": "pr-hard-25",
+    "task_level": "hard",
+    "reward": 0.35,
+    "reward_breakdown": {
+      "review_decision": 0.05,
+      "defect_category": 0.0,
+      "faulty_line": 0.0,
+      "reviewer_team": 0.25,
+      "suggested_change": 0.05
+    }
+  },
+  {
+    "episode_number": 52,
+    "pr_id": "pr-hard-2",
+    "task_level": "hard",
+    "reward": 0.25,
+    "reward_breakdown": {
+      "review_decision": 0.05,
+      "defect_category": 0.2,
+      "faulty_line": 0.0,
+      "reviewer_team": 0.0,
+      "suggested_change": 0.0
+    }
+  },
+  {
+    "episode_number": 53,
+    "pr_id": "pr-easy-25",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 54,
+    "pr_id": "pr-medium-7",
+    "task_level": "medium",
+    "reward": 0.15,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "defect_category": 0.0,
+      "faulty_line": 0.15
+    }
+  },
+  {
+    "episode_number": 55,
+    "pr_id": "pr-easy-23",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 56,
+    "pr_id": "pr-hard-34",
+    "task_level": "hard",
+    "reward": 0.25,
+    "reward_breakdown": {
+      "review_decision": 0.05,
+      "defect_category": 0.2,
+      "faulty_line": 0.0,
+      "reviewer_team": 0.0,
+      "suggested_change": 0.0
+    }
+  },
+  {
+    "episode_number": 57,
+    "pr_id": "pr-easy-12",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 58,
+    "pr_id": "pr-easy-23",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 59,
+    "pr_id": "pr-medium-27",
+    "task_level": "medium",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "defect_category": 0.0,
+      "faulty_line": 0.0
+    }
+  },
+  {
+    "episode_number": 60,
+    "pr_id": "pr-hard-7",
+    "task_level": "hard",
+    "reward": 0.25,
+    "reward_breakdown": {
+      "review_decision": 0.05,
+      "defect_category": 0.2,
+      "faulty_line": 0.0,
+      "reviewer_team": 0.0,
+      "suggested_change": 0.0
+    }
+  },
+  {
+    "episode_number": 61,
+    "pr_id": "pr-easy-21",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 62,
+    "pr_id": "pr-hard-19",
+    "task_level": "hard",
+    "reward": 0.3,
+    "reward_breakdown": {
+      "review_decision": 0.05,
+      "defect_category": 0.2,
+      "faulty_line": 0.0,
+      "reviewer_team": 0.0,
+      "suggested_change": 0.05
+    }
+  },
+  {
+    "episode_number": 63,
+    "pr_id": "pr-easy-11",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 64,
+    "pr_id": "pr-easy-14",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 65,
+    "pr_id": "pr-easy-24",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 66,
+    "pr_id": "pr-easy-22",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 67,
+    "pr_id": "pr-easy-5",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 68,
+    "pr_id": "pr-medium-4",
+    "task_level": "medium",
+    "reward": 0.5,
+    "reward_breakdown": {
+      "review_decision": 0.1,
+      "defect_category": 0.4,
+      "faulty_line": 0.0
+    }
+  },
+  {
+    "episode_number": 69,
+    "pr_id": "pr-easy-30",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 70,
+    "pr_id": "pr-hard-3",
+    "task_level": "hard",
+    "reward": 0.4,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "defect_category": 0.0,
+      "faulty_line": 0.1,
+      "reviewer_team": 0.25,
+      "suggested_change": 0.05
+    }
+  },
+  {
+    "episode_number": 71,
+    "pr_id": "pr-medium-17",
+    "task_level": "medium",
+    "reward": 0.1,
+    "reward_breakdown": {
+      "review_decision": 0.1,
+      "defect_category": 0.0,
+      "faulty_line": 0.0
+    }
+  },
+  {
+    "episode_number": 72,
+    "pr_id": "pr-easy-33",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 73,
+    "pr_id": "pr-easy-31",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 74,
+    "pr_id": "pr-easy-14",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 75,
+    "pr_id": "pr-easy-16",
+    "task_level": "easy",
+    "reward": 0.999,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.45
+    }
+  },
+  {
+    "episode_number": 76,
+    "pr_id": "pr-easy-21",
+    "task_level": "easy",
+    "reward": 0.45,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.45
+    }
+  },
+  {
+    "episode_number": 77,
+    "pr_id": "pr-easy-8",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 78,
+    "pr_id": "pr-medium-9",
+    "task_level": "medium",
+    "reward": 0.4,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "defect_category": 0.4,
+      "faulty_line": 0.0
+    }
+  },
+  {
+    "episode_number": 79,
+    "pr_id": "pr-easy-24",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 80,
+    "pr_id": "pr-medium-24",
+    "task_level": "medium",
+    "reward": 0.1,
+    "reward_breakdown": {
+      "review_decision": 0.1,
+      "defect_category": 0.0,
+      "faulty_line": 0.0
+    }
+  },
+  {
+    "episode_number": 81,
+    "pr_id": "pr-easy-9",
+    "task_level": "easy",
+    "reward": 0.999,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.45
+    }
+  },
+  {
+    "episode_number": 82,
+    "pr_id": "pr-easy-26",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 83,
+    "pr_id": "pr-easy-25",
+    "task_level": "easy",
+    "reward": 0.45,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.45
+    }
+  },
+  {
+    "episode_number": 84,
+    "pr_id": "pr-easy-32",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 85,
+    "pr_id": "pr-easy-17",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 86,
+    "pr_id": "pr-hard-12",
+    "task_level": "hard",
+    "reward": 0.15,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "defect_category": 0.0,
+      "faulty_line": 0.1,
+      "reviewer_team": 0.0,
+      "suggested_change": 0.05
+    }
+  },
+  {
+    "episode_number": 87,
+    "pr_id": "pr-easy-8",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 88,
+    "pr_id": "pr-easy-6",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 89,
+    "pr_id": "pr-easy-30",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 90,
+    "pr_id": "pr-easy-1",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 91,
+    "pr_id": "pr-hard-15",
+    "task_level": "hard",
+    "reward": 0.1,
+    "reward_breakdown": {
+      "review_decision": 0.05,
+      "defect_category": 0.0,
+      "faulty_line": 0.0,
+      "reviewer_team": 0.0,
+      "suggested_change": 0.05
+    }
+  },
+  {
+    "episode_number": 92,
+    "pr_id": "pr-easy-11",
+    "task_level": "easy",
+    "reward": 0.45,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.45
+    }
+  },
+  {
+    "episode_number": 93,
+    "pr_id": "pr-medium-21",
+    "task_level": "medium",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "defect_category": 0.0,
+      "faulty_line": 0.0
+    }
+  },
+  {
+    "episode_number": 94,
+    "pr_id": "pr-easy-13",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 95,
+    "pr_id": "pr-easy-16",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 96,
+    "pr_id": "pr-medium-20",
+    "task_level": "medium",
+    "reward": 0.1,
+    "reward_breakdown": {
+      "review_decision": 0.1,
+      "defect_category": 0.0,
+      "faulty_line": 0.0
+    }
+  },
+  {
+    "episode_number": 97,
+    "pr_id": "pr-easy-16",
+    "task_level": "easy",
+    "reward": 0.45,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.45
+    }
+  },
+  {
+    "episode_number": 98,
+    "pr_id": "pr-easy-7",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 99,
+    "pr_id": "pr-easy-28",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 100,
+    "pr_id": "pr-easy-10",
+    "task_level": "easy",
+    "reward": 0.45,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.45
+    }
+  },
+  {
+    "episode_number": 101,
+    "pr_id": "pr-easy-9",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 102,
+    "pr_id": "pr-medium-8",
+    "task_level": "medium",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "defect_category": 0.4,
+      "faulty_line": 0.15
+    }
+  },
+  {
+    "episode_number": 103,
+    "pr_id": "pr-easy-12",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 104,
+    "pr_id": "pr-easy-18",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 105,
+    "pr_id": "pr-easy-8",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 106,
+    "pr_id": "pr-medium-17",
+    "task_level": "medium",
+    "reward": 0.1,
+    "reward_breakdown": {
+      "review_decision": 0.1,
+      "defect_category": 0.0,
+      "faulty_line": 0.0
+    }
+  },
+  {
+    "episode_number": 107,
+    "pr_id": "pr-medium-29",
+    "task_level": "medium",
+    "reward": 0.1,
+    "reward_breakdown": {
+      "review_decision": 0.1,
+      "defect_category": 0.0,
+      "faulty_line": 0.0
+    }
+  },
+  {
+    "episode_number": 108,
+    "pr_id": "pr-easy-25",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 109,
+    "pr_id": "pr-easy-15",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 110,
+    "pr_id": "pr-easy-17",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 111,
+    "pr_id": "pr-easy-28",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 112,
+    "pr_id": "pr-easy-15",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 113,
+    "pr_id": "pr-easy-13",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 114,
+    "pr_id": "pr-easy-4",
+    "task_level": "easy",
+    "reward": 0.45,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.45
+    }
+  },
+  {
+    "episode_number": 115,
+    "pr_id": "pr-easy-30",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 116,
+    "pr_id": "pr-easy-25",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 117,
+    "pr_id": "pr-easy-4",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 118,
+    "pr_id": "pr-easy-31",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 119,
+    "pr_id": "pr-easy-15",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 120,
+    "pr_id": "pr-medium-26",
+    "task_level": "medium",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "defect_category": 0.0,
+      "faulty_line": 0.0
+    }
+  },
+  {
+    "episode_number": 121,
+    "pr_id": "pr-easy-25",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 122,
+    "pr_id": "pr-easy-12",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 123,
+    "pr_id": "pr-easy-9",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 124,
+    "pr_id": "pr-easy-12",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 125,
+    "pr_id": "pr-easy-27",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 126,
+    "pr_id": "pr-easy-1",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 127,
+    "pr_id": "pr-medium-10",
+    "task_level": "medium",
+    "reward": 0.1,
+    "reward_breakdown": {
+      "review_decision": 0.1,
+      "defect_category": 0.0,
+      "faulty_line": 0.0
+    }
+  },
+  {
+    "episode_number": 128,
+    "pr_id": "pr-easy-4",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 129,
+    "pr_id": "pr-easy-13",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 130,
+    "pr_id": "pr-easy-7",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 131,
+    "pr_id": "pr-easy-11",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 132,
+    "pr_id": "pr-hard-4",
+    "task_level": "hard",
+    "reward": 0.05,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "defect_category": 0.0,
+      "faulty_line": 0.0,
+      "reviewer_team": 0.0,
+      "suggested_change": 0.05
+    }
+  },
+  {
+    "episode_number": 133,
+    "pr_id": "pr-easy-19",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 134,
+    "pr_id": "pr-easy-10",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 135,
+    "pr_id": "pr-medium-9",
+    "task_level": "medium",
+    "reward": 0.1,
+    "reward_breakdown": {
+      "review_decision": 0.1,
+      "defect_category": 0.0,
+      "faulty_line": 0.0
+    }
+  },
+  {
+    "episode_number": 136,
+    "pr_id": "pr-medium-15",
+    "task_level": "medium",
+    "reward": 0.45,
+    "reward_breakdown": {
+      "review_decision": 0.1,
+      "defect_category": 0.0,
+      "faulty_line": 0.35
+    }
+  },
+  {
+    "episode_number": 137,
+    "pr_id": "pr-easy-27",
+    "task_level": "easy",
+    "reward": 0.999,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.45
+    }
+  },
+  {
+    "episode_number": 138,
+    "pr_id": "pr-easy-22",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 139,
+    "pr_id": "pr-easy-28",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 140,
+    "pr_id": "pr-easy-16",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 141,
+    "pr_id": "pr-easy-10",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 142,
+    "pr_id": "pr-easy-13",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 143,
+    "pr_id": "pr-medium-16",
+    "task_level": "medium",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "defect_category": 0.0,
+      "faulty_line": 0.0
+    }
+  },
+  {
+    "episode_number": 144,
+    "pr_id": "pr-easy-3",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 145,
+    "pr_id": "pr-medium-28",
+    "task_level": "medium",
+    "reward": 0.1,
+    "reward_breakdown": {
+      "review_decision": 0.1,
+      "defect_category": 0.0,
+      "faulty_line": 0.0
+    }
+  },
+  {
+    "episode_number": 146,
+    "pr_id": "pr-easy-16",
+    "task_level": "easy",
+    "reward": 0.45,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.45
+    }
+  },
+  {
+    "episode_number": 147,
+    "pr_id": "pr-easy-12",
+    "task_level": "easy",
+    "reward": 0.55,
+    "reward_breakdown": {
+      "review_decision": 0.55,
+      "blocker_type": 0.0
+    }
+  },
+  {
+    "episode_number": 148,
+    "pr_id": "pr-hard-4",
+    "task_level": "hard",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "defect_category": 0.0,
+      "faulty_line": 0.0,
+      "reviewer_team": 0.0,
+      "suggested_change": 0.0
+    }
+  },
+  {
+    "episode_number": 149,
+    "pr_id": "pr-medium-32",
+    "task_level": "medium",
+    "reward": 0.1,
+    "reward_breakdown": {
+      "review_decision": 0.1,
+      "defect_category": 0.0,
+      "faulty_line": 0.0
+    }
+  },
+  {
+    "episode_number": 150,
+    "pr_id": "pr-easy-4",
+    "task_level": "easy",
+    "reward": 0.001,
+    "reward_breakdown": {
+      "review_decision": 0.0,
+      "blocker_type": 0.0
+    }
+  }
+]
