@@ -1,4 +1,6 @@
 from fastapi import FastAPI
+from fastapi.responses import HTMLResponse
+import os
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
@@ -18,12 +20,13 @@ app.add_middleware(
 env = PRRegressionAuditEnvironment()
 
 
-@app.get("/")
+@app.get("/", response_class=HTMLResponse)
 def root():
-    return {
-        "message": "PRRegressionAuditEnv API is live! Navigate to /docs for the interactive Swagger UI.",
-        "status": "healthy",
-    }
+    template_path = os.path.join(os.path.dirname(__file__), "templates", "index.html")
+    if os.path.exists(template_path):
+        with open(template_path, "r", encoding="utf-8") as f:
+            return f.read()
+    return "<h1>PR Review RL Agent Dashboard</h1><p>Dashboard HTML not found.</p>"
 
 
 @app.get("/health")

@@ -56,23 +56,29 @@ Your job is to detect accidental regressions introduced by developers.
 The PR title and description describe the INTENDED feature — the flaw is unrelated to it.
 For Hard tasks you will see a Context Snippet showing existing code the PR interacts with.
 
-Respond with ONLY valid, strict JSON matching this schema:
-{
-  "thought_process": ["step 1 reasoning", "step 2 reasoning"],
-  "review_decision": "approve" | "request_changes",
-  "blocker_type": "debug_output" | "hardcoded_secret" | "do_not_merge_comment" | "debug_test_bypass" | "syntax_error" | null,
-  "defect_category": "security" | "logic" | "performance" | null,
-  "faulty_line": <integer 1-indexed in Proposed Code> | null,
-  "reviewer_team": "infosec" | "devops" | "core-frontend" | "core-sysdev" | "aiml" | null,
-  "suggested_change": "<one concrete sentence under 200 chars>" | null
-}
+Respond with ONLY valid, strict JSON. Do NOT output markdown or any other text.
+The JSON must have the following keys and value types:
+- "thought_process": list of strings (your reasoning steps)
+- "review_decision": string, exactly "approve" or "request_changes"
+- "blocker_type": string or null (only for Easy tasks). Valid strings: "debug_output", "hardcoded_secret", "do_not_merge_comment", "debug_test_bypass", "syntax_error".
+- "defect_category": string or null (for Medium + Hard). Valid strings: "security", "logic", "performance".
+- "faulty_line": integer or null (1-indexed line number in Proposed Code). Null for Easy.
+- "reviewer_team": string or null (for Hard only). Valid strings: "infosec", "devops", "core-frontend", "core-sysdev", "aiml".
+- "suggested_change": string or null (for Hard only). Must be under 200 characters.
 
-Field rules:
-- blocker_type: only for Easy tasks. Null on clean PRs, one of the 5 types on flagged PRs.
-- defect_category: for Medium + Hard. Null for Easy.
-- faulty_line: 1-indexed line number in Proposed Code where the defect lives. Null for Easy.
-- reviewer_team: for Hard only. Null for Easy + Medium.
-- suggested_change: for Hard only. MUST be under 200 characters. Name the exact fix.
+Example of valid JSON output:
+{
+  "thought_process": [
+    "The proposed change introduces a hardcoded API key.",
+    "This is a severe security issue."
+  ],
+  "review_decision": "request_changes",
+  "blocker_type": "hardcoded_secret",
+  "defect_category": "security",
+  "faulty_line": 2,
+  "reviewer_team": null,
+  "suggested_change": null
+}
 
 Output raw JSON only. No markdown. No backticks. No explanation outside the JSON."""
 

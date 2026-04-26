@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PR Review RL Agent Dashboard</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- React & ReactDOM -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  
+  <!-- Babel for in-browser JSX transpilation -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <!-- Recharts -->
+  <script src="https://unpkg.com/prop-types/prop-types.min.js"></script>
+  <script src="https://unpkg.com/recharts/umd/Recharts.js"></script>
+  
+  <style>
+    body { margin: 0; padding: 0; background-color: #0a0a0f; color: #e2e8f0; font-family: 'Inter', system-ui, sans-serif; }
+    * { box-sizing: border-box; }
+    .card { background: #12121e; border: 1px solid #1e2035; border-radius: 12px; padding: 1.5rem; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .textarea { width: 100%; height: 140px; background: #0d0d1a; color: #a3adc2; border: 1px solid #1e2035; border-radius: 8px; padding: 10px 12px; font-family: 'Courier New', monospace; font-size: 12px; resize: vertical; margin-top: 8px; }
+    .textarea:focus { outline: none; border-color: #4ade80; }
+    .badge { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; }
+    .tag-baseline { background: #6366f120; color: #818cf8; border: 1px solid #6366f140; }
+    .tag-v1 { background: #f59e0b20; color: #fbbf24; border: 1px solid #f59e0b40; }
+    .tag-v2 { background: #4ade8020; color: #4ade80; border: 1px solid #4ade8040; }
+    .metric-val { font-size: 2.2rem; font-weight: 700; letter-spacing: -1px; }
+    .positive { color: #4ade80; }
+    .negative { color: #f87171; }
+    .neutral  { color: #6b7280; }
+    h1 { margin: 0 0 0.25rem; font-size: 1.75rem; font-weight: 700; }
+    h2 { margin: 0 0 1rem; font-size: 1.1rem; font-weight: 600; color: #94a3b8; }
+    h3 { margin: 0 0 0.5rem; font-size: 0.95rem; font-weight: 600; color: #cbd5e1; }
+    label { font-size: 0.75rem; font-weight: 500; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; }
+    .section-title { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #4b5563; font-weight: 600; margin-bottom: 1rem; }
+    .divider { border: none; border-top: 1px solid #1e2035; margin: 2rem 0; }
+    @media (max-width: 768px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div id="error-log" style="color: red; padding: 20px; font-family: monospace; white-space: pre-wrap;"></div>
+  <div id="root"></div>
+
+  <script>
+    window.onerror = function(message, source, lineno, colno, error) {
+      document.getElementById('error-log').innerText += "\nGlobal Error: " + message + "\n" + (error ? error.stack : '');
+    };
+    window.addEventListener('unhandledrejection', function(event) {
+      document.getElementById('error-log').innerText += "\nPromise Error: " + event.reason;
+    });
+  </script>
+
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+    if (!window.Recharts) {
+      document.getElementById('error-log').innerText += "\nError: window.Recharts is not defined! CDN failed to load.";
+    }
+    const { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line, ReferenceLine } = window.Recharts || {};
+
+    const INITIAL_BASELINE = {
+      easy:   { avg: 0.3597, std: 0.2994, n: 107 },
+      medium: { avg: 0.1733, std: 0.1702, n: 26  },
+      hard:   { avg: 0.1824, std: 0.121,  n: 17  }
+    };
+
+    const INITIAL_V1 = {
+      easy:   { avg: 0.3098, std: 0.3225, n: 47 },
+      medium: { avg: 0.0382, std: 0.069,  n: 8  },
+      hard:   { avg: 0.0181, std: 0.0299, n: 5  }
+    };
+
+    const INITIAL_V2 = {
+      easy:   { avg: 0.0, std: 0.0, n: 0 },
+      medium: { avg: 0.0, std: 0.0, n: 0 },
+      hard:   { avg: 0.0, std: 0.0, n: 0 }
+    };
+
+    const LEVELS = ['easy', 'medium', 'hard'];
+    const COLORS = { baseline: '#6366f1', v1: '#f59e0b', v2: '#4ade80' };
+
+    function ResultsDashboard() {
+      const [baselineStr, setBaselineStr] = useState(JSON.stringify(INITIAL_BASELINE, null, 2));
+      const [v1Str, setV1Str] = useState(JSON.stringify(INITIAL_V1, null, 2));
+      const [v2Str, setV2Str] = useState(JSON.stringify(INITIAL_V2, null, 2));
+      const [envHealth, setEnvHealth] = useState(null);
+
+      useEffect(() => {
+        // Poll backend health API
+        fetch('/health')
+          .then(res => res.json())
+          .then(data => setEnvHealth(data.status))
+          .catch(() => setEnvHealth('disconnected'));
+      }, []);
+
+      let baseline = INITIAL_BASELINE, v1 = INITIAL_V1, v2 = INITIAL_V2;
+      try { baseline = JSON.parse(baselineStr); } catch {}
+      try { v1 = JSON.parse(v1Str); } catch {}
+      try { v2 = JSON.parse(v2Str); } catch {}
+
+      const data = LEVELS.map(level => {
+        const b = baseline[level] || { avg: 0 };
+        const t1 = v1[level] || { avg: 0 };
+        const t2 = v2[level] || { avg: 0 };
+        return {
+          name: level.charAt(0).toUpperCase() + level.slice(1),
+          Baseline: +(b.avg.toFixed(4)),
+          'V1 (200 steps)': +(t1.avg.toFixed(4)),
+          'V2 (400 steps)': +(t2.avg.toFixed(4)),
+          deltaV1: +(t1.avg - b.avg).toFixed(4),
+          deltaV2: +(t2.avg - b.avg).toFixed(4),
+          pctV1: b.avg > 0 ? +((t1.avg - b.avg) / b.avg * 100).toFixed(1) : 0,
+          pctV2: b.avg > 0 ? +((t2.avg - b.avg) / b.avg * 100).toFixed(1) : 0,
+        };
+      });
+
+      const v2Ready = LEVELS.some(l => (v2[l]?.n || 0) > 0);
+
+      return (
+        <div style={{ padding: '2rem 2.5rem' }}>
+          {/* Header */}
+          <div style={{ marginBottom: '2.5rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.5rem' }}>
+              <h1>PR Review RL Agent</h1>
+              {envHealth === 'healthy' && <span className="badge" style={{background:'#05966920', color:'#10b981', border:'1px solid #10b98140'}}>● ENV Online</span>}
+              {envHealth === 'disconnected' && <span className="badge negative">● ENV Offline</span>}
+            </div>
+            <h2>3-Stage GRPO Training Results — Qwen2.5-1.5B on PRRegressionAudit</h2>
+            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+              <span className="badge tag-baseline">Baseline: Random</span>
+              <span className="badge tag-v1">V1: 200 Steps</span>
+              <span className="badge tag-v2">{v2Ready ? 'V2: Curriculum + Guards' : 'V2: Training...'}</span>
+            </div>
+          </div>
+
+          <div className="card" style={{ marginBottom: '2rem' }}>
+            <p className="section-title">📋 Live Data Config</p>
+            <div className="grid-3">
+              <div><label>Baseline</label><textarea className="textarea" value={baselineStr} onChange={e => setBaselineStr(e.target.value)} /></div>
+              <div><label>V1 (No curriculum)</label><textarea className="textarea" value={v1Str} onChange={e => setV1Str(e.target.value)} /></div>
+              <div><label>V2 (Curriculum + Guards) {!v2Ready && '⏳'}</label><textarea className="textarea" value={v2Str} onChange={e => setV2Str(e.target.value)} /></div>
+            </div>
+          </div>
+
+          <p className="section-title">📊 Improvement vs Baseline</p>
+          <div className="grid-3" style={{ marginBottom: '2rem' }}>
+            {data.map(d => (
+              <div className="card" key={d.name} style={{ textAlign: 'center' }}>
+                <h3>{d.name}</h3>
+                <div className={`metric-val ${d.pctV1 >= 0 ? 'positive' : 'negative'}`}>
+                  {d.pctV1 > 0 ? '+' : ''}{d.pctV1}%
+                </div>
+                <div style={{ color: '#475569', fontSize: '0.8rem', marginTop: '0.4rem' }}>
+                  {d.Baseline.toFixed(3)} → {d['V1 (200 steps)'].toFixed(3)}
+                </div>
+                {v2Ready && (
+                  <div style={{ marginTop: '0.75rem', padding: '0.4rem', background: '#0d1f1a', borderRadius: 6, fontSize: '0.8rem' }}>
+                    <span style={{ color: '#4ade80', fontWeight: 600 }}>V2: {d.pctV2 > 0 ? '+' : ''}{d.pctV2}%</span>
+                    <span style={{ color: '#475569', marginLeft: '0.5rem' }}>→ {d['V2 (400 steps)'].toFixed(3)}</span>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <div className="grid-2" style={{ marginBottom: '2rem' }}>
+            <div className="card">
+              <h3>Average Score by Difficulty</h3>
+              <div style={{ height: 300 }}>
+                <ResponsiveContainer>
+                  <BarChart data={data} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#1e2035" vertical={false} />
+                    <XAxis dataKey="name" stroke="#4b5563" tickLine={false} axisLine={false} style={{ fontSize: 12 }} />
+                    <YAxis stroke="#4b5563" domain={[0, 0.6]} tickLine={false} axisLine={false} style={{ fontSize: 11 }} />
+                    <Tooltip contentStyle={{ backgroundColor: '#12121e', border: '1px solid #1e2035', borderRadius: 8, color: '#e2e8f0' }} itemStyle={{ color: '#e2e8f0' }} formatter={(v) => v.toFixed(4)} />
+                    <Legend wrapperStyle={{ paddingTop: 16, fontSize: 12 }} />
+                    <Bar dataKey="Baseline" fill={COLORS.baseline} radius={[4,4,0,0]} maxBarSize={40} />
+                    <Bar dataKey="V1 (200 steps)" fill={COLORS.v1} radius={[4,4,0,0]} maxBarSize={40} />
+                    {v2Ready && <Bar dataKey="V2 (400 steps)" fill={COLORS.v2} radius={[4,4,0,0]} maxBarSize={40} />}
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+
+            <div className="card">
+              <h3>Delta vs Baseline</h3>
+              <div style={{ height: 300 }}>
+                <ResponsiveContainer>
+                  <LineChart data={data} margin={{ top: 10, right: 20, left: -10, bottom: 0 }}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#1e2035" vertical={false} />
+                    <XAxis dataKey="name" stroke="#4b5563" tickLine={false} axisLine={false} style={{ fontSize: 12 }} />
+                    <YAxis stroke="#4b5563" tickLine={false} axisLine={false} style={{ fontSize: 11 }} />
+                    <ReferenceLine y={0} stroke="#374151" strokeDasharray="4 4" />
+                    <Tooltip contentStyle={{ backgroundColor: '#12121e', border: '1px solid #1e2035', borderRadius: 8, color: '#e2e8f0' }} formatter={(v) => v.toFixed(4)} />
+                    <Legend wrapperStyle={{ paddingTop: 16, fontSize: 12 }} />
+                    <Line type="monotone" dataKey="deltaV1" name="V1 Delta" stroke={COLORS.v1} strokeWidth={2.5} dot={{ r: 5, fill: '#12121e', strokeWidth: 2 }} />
+                    {v2Ready && <Line type="monotone" dataKey="deltaV2" name="V2 Delta" stroke={COLORS.v2} strokeWidth={2.5} dot={{ r: 5, fill: '#12121e', strokeWidth: 2 }} />}
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<ResultsDashboard />);
+  </script>
+</body>
+</html>

@@ -29,6 +29,9 @@ OUTPUT_DIR = "evaluation/checkpoints/"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 def parse_action(raw) -> dict:
+    # --- CRITICAL FIX for TRL >= 0.12.0 ---
+    # TRL passes the completion as a list of dicts (the chat template) 
+    # rather than a raw string. We must extract the content to avoid TypeError!
     if isinstance(raw, list):
         if len(raw) > 0 and isinstance(raw[0], dict) and "content" in raw[0]:
             raw = raw[0]["content"]
@@ -38,6 +41,7 @@ def parse_action(raw) -> dict:
             raw = ""
     if not isinstance(raw, str):
         raw = str(raw)
+    # --------------------------------------
         
     text = re.sub(r"```(?:json)?", "", raw).replace("```", "").strip()
     match = re.search(r"\{.*\}", text, re.DOTALL)
@@ -134,6 +138,47 @@ def format_reward(completions, **kwargs):
             rewards.append(0.0)
     return rewards
 
+def evaluate_for_ui(model, tokenizer, dataset):
+    import numpy as np
+    print("\n--- Evaluating Post-Training Stats for UI Dashboard ---")
+    stats = {"easy": [], "medium": [], "hard": []}
+    FastLanguageModel.for_inference(model)
+    
+    # Evaluate up to 20 samples per difficulty
+    for item in dataset:
+        level = item["task_level"]
+        if len(stats[level]) >= 20:
+            if all(len(v) >= 20 for v in stats.values()):
+                break
+            continue
+        
+        try:
+            inputs = tokenizer.apply_chat_template(item["prompt"], tokenize=True, add_generation_prompt=True, return_tensors="pt").to("cuda")
+            outputs = model.generate(inputs, max_new_tokens=256, use_cache=True)
+            new_tokens = outputs[0][inputs.shape[1]:]
+            resp = tokenizer.decode(new_tokens, skip_special_tokens=True)
+            
+            action = parse_action(resp)
+            truth = PR_TRUTH.get(item["pr_id"])
+            if truth and action:
+                reward = score_action(action, truth)
+                stats[level].append(reward)
+        except Exception:
+            pass
+            
+    # Format JSON
+    output_json = {}
+    for level in ["easy", "medium", "hard"]:
+        arr = stats[level]
+        n = len(arr)
+        avg = float(np.mean(arr)) if n > 0 else 0.0
+        std = float(np.std(arr)) if n > 0 else 0.0
+        output_json[level] = {"avg": round(avg, 2), "std": round(std, 2), "n": n}
+        
+    print("\nPASTE THIS JSON INTO THE REACT UI (POST_TRAINING):")
+    print(json.dumps(output_json, indent=2))
+    print("--------------------------------------------------\n")
+
 def main():
     print("Loading model...")
     model, tokenizer = FastLanguageModel.from_pretrained(
@@ -187,6 +232,13 @@ def main():
     tokenizer.save_pretrained("evaluation/checkpoints/final_adapter/")
     model.push_to_hub("rsd-06/pr-regression-audit-grpo-adapter")
     tokenizer.push_to_hub("rsd-06/pr-regression-audit-grpo-adapter")
+    
+    # Evaluate and print JSON stats for the React UI
+    try:
+        evaluate_for_ui(model, tokenizer, dataset)
+    except Exception as e:
+        print(f"Failed to generate UI evaluation stats: {e}")
+        
     print("Done!")
 
 if __name__ == "__main__":

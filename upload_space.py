@@ -7,7 +7,7 @@ from huggingface_hub import HfApi
 import os
 
 api = HfApi()
-SPACE_ID = "rsd-06/PRRegressionAuditEnv"
+SPACE_ID = "SaiSanjayR/GitPRTriage_Environment"
 ROOT = os.path.abspath(".")
 
 print(f"Uploading ENV server files to Space: {SPACE_ID}")
@@ -47,6 +47,6 @@ api.upload_folder(
 
 print(f"\n✅ Upload complete!")
 print(f"Space URL: https://huggingface.co/spaces/{SPACE_ID}")
-print(f"Health URL: https://rsd-06-prregressionauditenv.hf.space/health")
+print(f"Health URL: https://saisanjayr-gitprtriage-environment.hf.space/health")
 print("\nThe Space Docker build will start automatically (2-4 mins).")
-print("Watch the build at: https://huggingface.co/spaces/rsd-06/PRRegressionAuditEnv")
+print(f"Watch the build at: https://huggingface.co/spaces/{SPACE_ID}")
