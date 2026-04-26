@@ -22,6 +22,8 @@ tags:
 
 **Automated PR Regression Auditor** — a high-fidelity reinforcement learning environment where LLM agents act as senior code reviewers catching accidental defects in Pull Requests. Built for the **Meta × Scaler OpenEnv Hackathon 2026**.
 
+> **"PR descriptions always describe the intended feature — never the flaw. This project aims to solve that by identifying deep-seated regressions and code breaks affecting the broader codebase that a human reviewer might easily miss."**
+
 ---
 
 ## 🔗 Important Links & Resources
@@ -29,8 +31,9 @@ tags:
 | Resource | Hugging Face URL |
 |----------|------------------|
 | 🌐 **Live Environment (Space)** | [rsd-06/PRRegressionAuditEnv](https://huggingface.co/spaces/rsd-06/PRRegressionAuditEnv) |
-| 📊 **GRPO Training Dataset** | [rsd-06/pr-regression-audit-grpo](https://huggingface.co/datasets/rsd-06/pr-regression-audit-grpo) |
-| 🧠 **Trained Model V1 (Adapter)** | [rsd-06/pr-regression-audit-grpo-adapter](https://huggingface.co/rsd-06/pr-regression-audit-grpo-adapter) |
+| 📊 **GRPO Training Dataset (V1)** | [SaiSanjayR/pr-regression-audit-grpo](https://huggingface.co/datasets/SaiSanjayR/pr-regression-audit-grpo) |
+| 📊 **GRPO Training Dataset (V2)** | [rsd-06/pr-regression-audit-grpo](https://huggingface.co/datasets/rsd-06/pr-regression-audit-grpo) |
+| 🧠 **Trained Model V1 (Adapter)** | [SaiSanjayR/pr-triage-grpo-adapter](https://huggingface.co/SaiSanjayR/pr-triage-grpo-adapter) |
 | 🚀 **Trained Model V2 (Curriculum)** | [rsd-06/pr-regression-audit-grpo-adapter-v2](https://huggingface.co/rsd-06/pr-regression-audit-grpo-adapter-v2) |
 
 ---
