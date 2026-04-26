@@ -206,25 +206,34 @@ Trigger: easy avg ≥ 0.80    Trigger: medium avg ≥ 0.65  (terminal phase)
 
 ## API Endpoints
 
-| Endpoint | Method | Description | Hugging Face Space URL | Localhost URL (Running on your computer) |
-|----------|--------|-------------|------------------------|------------------------------------------|
-| `/` | GET | Results Dashboard | [App URL](https://rsd-06-prregression-auditenv.hf.space/) | [http://localhost:7860/](http://localhost:7860/) |
-| `/health` | GET | Returns status + PR count | [Live Link](https://rsd-06-prregression-auditenv.hf.space/health) | [http://localhost:7860/health](http://localhost:7860/health) |
-| `/reset` | POST | Start new episode, returns `ReviewObservation` | `https://rsd-06-prregression-auditenv.hf.space/reset` | `http://localhost:7860/reset` |
-| `/step` | POST | Submit `ReviewAction`, returns observation + reward | `https://rsd-06-prregression-auditenv.hf.space/step` | `http://localhost:7860/step` |
-| `/state` | GET | Current episode metadata | [Live Link](https://rsd-06-prregression-auditenv.hf.space/state) | [http://localhost:7860/state](http://localhost:7860/state) |
-| `/tasks` | GET | List all 3 PR tasks with descriptions | [Live Link](https://rsd-06-prregression-auditenv.hf.space/tasks) | [http://localhost:7860/tasks](http://localhost:7860/tasks) |
-| `/curriculum` | GET | Live curriculum phase + performance stats | [Live Link](https://rsd-06-prregression-auditenv.hf.space/curriculum) | [http://localhost:7860/curriculum](http://localhost:7860/curriculum) |
-| `/audit` | GET | Last N episode records (Training Curve Data) | [Live Link](https://rsd-06-prregression-auditenv.hf.space/audit?n=10000) | [http://localhost:7860/audit?n=10000](http://localhost:7860/audit?n=10000) |
-| `/agents/info` | GET | Full multi-agent pipeline architecture | [Live Link](https://rsd-06-prregression-auditenv.hf.space/agents/info) | [http://localhost:7860/agents/info](http://localhost:7860/agents/info) |
-| `/guards` | GET | Guard suite statistics + penalty rate | [Live Link](https://rsd-06-prregression-auditenv.hf.space/guards) | [http://localhost:7860/guards](http://localhost:7860/guards) |
-| `/guards/audit` | GET | Guard firing log with before/after rewards | [Live Link](https://rsd-06-prregression-auditenv.hf.space/guards/audit) | [http://localhost:7860/guards/audit](http://localhost:7860/guards/audit) |
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/` | GET | Health check landing page |
+| `/health` | GET | Returns status + PR count |
+| `/reset` | POST | Start new episode, returns `ReviewObservation` |
+| `/step` | POST | Submit `ReviewAction`, returns observation + reward |
+| `/state` | GET | Current episode metadata |
+| `/tasks` | GET | List all 3 PR tasks with descriptions |
+| `/curriculum` | GET | Live curriculum phase + performance stats |
+| `/audit` | GET | Last N episode records |
+| `/agents/info` | GET | Full multi-agent pipeline architecture |
+| `/guards` | GET | Guard suite statistics + penalty rate |
+| `/guards/audit` | GET | Guard firing log with before/after rewards |
 
 ---
 
 ## Quickstart
 
 **Prerequisites:** Python 3.11, Docker
+
+### 🔄 Switching Hugging Face Workspaces (For Teammates)
+
+If you want to train the model or deploy the environment using your own Hugging Face account, you don't need to manually hunt down hardcoded URLs. Just run the built-in workspace switcher:
+
+```bash
+python switch_workspace.py
+```
+This interactive prompt will ask for your **HF Username** and **Space Name**, and automatically update all dataset, adapter, and Space links across the entire codebase so you can start training on your own account immediately!
 
 ### Running Locally
 

@@ -226,6 +226,15 @@ Trigger: easy avg ≥ 0.80    Trigger: medium avg ≥ 0.65  (terminal phase)
 
 **Prerequisites:** Python 3.11, Docker
 
+### 🔄 Switching Hugging Face Workspaces (For Teammates)
+
+If you want to train the model or deploy the environment using your own Hugging Face account, you don't need to manually hunt down hardcoded URLs. Just run the built-in workspace switcher:
+
+```bash
+python switch_workspace.py
+```
+This interactive prompt will ask for your **HF Username** and **Space Name**, and automatically update all dataset, adapter, and Space links across the entire codebase so you can start training on your own account immediately!
+
 ### Running Locally
 
 ```bash
