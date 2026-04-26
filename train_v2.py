@@ -36,7 +36,7 @@ print(f"Loaded {len(PR_TRUTH)} PRs from ground truth.")
 
 # ── Config ────────────────────────────────────────────────────────────────────
 BASE_MODEL   = "unsloth/Qwen2.5-1.5B-Instruct"
-V1_ADAPTER   = "rsd-06/pr-regression-audit-grpo-adapter"   # Resume from our v1
+V1_ADAPTER   = "SaiSanjayR/pr-triage-grpo-adapter"          # SAI's trained v1 adapter
 OUT_ADAPTER  = "rsd-06/pr-regression-audit-grpo-adapter-v2"
 MAX_SEQ_LEN  = 2048
 OUTPUT_DIR   = "evaluation/checkpoints/v2/"
