@@ -32,6 +32,16 @@ api.upload_file(
     commit_message="deploy: update README",
 )
 
+# 1.6 Upload hfblog.md
+print("  -> Uploading hfblog.md...")
+api.upload_file(
+    path_or_fileobj=os.path.join(ROOT, "hfblog.md"),
+    path_in_repo="hfblog.md",
+    repo_id=SPACE_ID,
+    repo_type="space",
+    commit_message="deploy: upload hfblog",
+)
+
 # 2. Upload prevaluation_env/ recursively (server code + PR data + templates)
 print("  -> Uploading prevaluation_env/ (server code + PR data + dashboard template)...")
 api.upload_folder(
