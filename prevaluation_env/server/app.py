@@ -2,12 +2,17 @@ from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 import os
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 import uvicorn
 
 from .environment import PRRegressionAuditEnvironment
 from ..models import ReviewAction
 
 app = FastAPI(title="PRRegressionAuditEnv")
+
+assets_dir = os.path.join(os.path.dirname(__file__), "../../assets")
+if os.path.exists(assets_dir):
+    app.mount("/assets", StaticFiles(directory=assets_dir), name="assets")
 
 app.add_middleware(
     CORSMiddleware,
