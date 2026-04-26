@@ -1,72 +1,50 @@
 """
-Upload all files needed by the rsd-06/PRRegressionAuditEnv Space.
-Uploads: Dockerfile, prevaluation_env/ (server + data)
-Skips: .venv, venv, evaluation/, training/, __pycache__, egg-info
+Upload the ENTIRE project repository to the rsd-06/PRRegressionAuditEnv Space.
+Explicitly uploads each project folder and key root files one by one to ensure 
+absolute isolation from the virtual environment (.venv) and other junk.
 """
 from huggingface_hub import HfApi
 import os
 
 api = HfApi()
 SPACE_ID = "rsd-06/PRRegressionAuditEnv"
-ROOT = os.path.abspath(".")
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
-print(f"Uploading ENV server files to Space: {SPACE_ID}")
+print(f"Uploading FULL repository to Space: {SPACE_ID}")
+print(f"   Local Root: {ROOT}")
 
-# 1. Upload Dockerfile
-print("  -> Uploading Dockerfile...")
-api.upload_file(
-    path_or_fileobj=os.path.join(ROOT, "Dockerfile"),
-    path_in_repo="Dockerfile",
-    repo_id=SPACE_ID,
-    repo_type="space",
-    commit_message="deploy: update Dockerfile",
-)
+# 1. Folders to upload
+folders = ["assets", "evaluation", "prevaluation_env", "scripts", "training"]
 
-# 1.5 Upload README.md
-print("  -> Uploading README.md...")
-api.upload_file(
-    path_or_fileobj=os.path.join(ROOT, "README.md"),
-    path_in_repo="README.md",
-    repo_id=SPACE_ID,
-    repo_type="space",
-    commit_message="deploy: update README",
-)
+for folder in folders:
+    local_path = os.path.join(ROOT, folder)
+    if os.path.exists(local_path):
+        print(f"  -> Uploading folder: {folder}/")
+        api.upload_folder(
+            folder_path=local_path,
+            path_in_repo=folder,
+            repo_id=SPACE_ID,
+            repo_type="space",
+            commit_message=f"deploy: sync {folder}/ folder",
+            ignore_patterns=["**/__pycache__/**", "**/*.pyc"]
+        )
 
-# 1.6 Upload hfblog.md
-print("  -> Uploading hfblog.md...")
-api.upload_file(
-    path_or_fileobj=os.path.join(ROOT, "hfblog.md"),
-    path_in_repo="hfblog.md",
-    repo_id=SPACE_ID,
-    repo_type="space",
-    commit_message="deploy: upload hfblog",
-)
+# 2. Files in the root to upload
+root_files = ["Dockerfile", "README.md", "hfblog.md", "requirements.txt", ".gitignore"]
 
-# 2. Upload prevaluation_env/ recursively (server code + PR data + templates)
-print("  -> Uploading prevaluation_env/ (server code + PR data + dashboard template)...")
-api.upload_folder(
-    folder_path=os.path.join(ROOT, "prevaluation_env"),
-    path_in_repo="prevaluation_env",
-    repo_id=SPACE_ID,
-    repo_type="space",
-    ignore_patterns=[
-        "**/__pycache__/**",
-        "**/*.pyc",
-        "**/.venv/**",
-        "**/venv/**",
-        "**/*.egg-info/**",
-        "**/evaluation/**",
-        "**/.gitignore",
-        "**/pyrightconfig.json",
-        "**/uv.lock",
-        "**/validate-submission.sh",
-    ],
-    commit_message="deploy: update server code and dashboard template",
-)
+for file in root_files:
+    local_path = os.path.join(ROOT, file)
+    if os.path.exists(local_path):
+        print(f"  -> Uploading file: {file}")
+        api.upload_file(
+            path_or_fileobj=local_path,
+            path_in_repo=file,
+            repo_id=SPACE_ID,
+            repo_type="space",
+            commit_message=f"deploy: update {file}"
+        )
 
-print(f"\nDONE - Upload complete!")
+print(f"\nDONE - Full repository is now live on Hugging Face!")
 print(f"Space URL: https://huggingface.co/spaces/{SPACE_ID}")
 print(f"App URL: https://rsd-06-prregressionauditenv.hf.space/")
-print(f"Health URL: https://rsd-06-prregressionauditenv.hf.space/health")
-print("\nThe Space Docker build will start automatically (2-4 mins).")
-print(f"Watch the build at: https://huggingface.co/spaces/{SPACE_ID}")
+print("\nThe Space Docker build will restart automatically (2-4 mins).")
