@@ -26,6 +26,8 @@ tags:
 
 > **"PR descriptions always describe the intended feature — never the flaw. This project aims to solve that by identifying deep-seated regressions and code breaks affecting the broader codebase that a human reviewer might easily miss."**
 
+> 📝 **[Read our full technical writeup/mini-blog here →](https://github.com/SAISANJAYR/GitPRTriageEnv/blob/main/Blog.MD)**
+
 ---
 
 ## 🔗 Important Links & Resources
@@ -33,6 +35,8 @@ tags:
 | Resource | Hugging Face URL |
 |----------|------------------|
 | 🌐 **Live Environment (Space)** | [rsd-06/PRRegressionAuditEnv](https://huggingface.co/spaces/rsd-06/PRRegressionAuditEnv) |
+| **📝 Mini Blog / Technical Writeup** | **[Blog.MD on GitHub](https://github.com/SAISANJAYR/GitPRTriageEnv/blob/main/Blog.MD)** |
+| 🗒️ **Training Notebook (Colab-ready)** | [grpo_training.ipynb](https://github.com/SAISANJAYR/GitPRTriageEnv/blob/main/training/grpo_training.ipynb) |
 | 📊 **GRPO Training Dataset (V1)** | [SaiSanjayR/pr-regression-audit-grpo](https://huggingface.co/datasets/SaiSanjayR/pr-regression-audit-grpo) |
 | 📊 **GRPO Training Dataset (V2)** | [rsd-06/pr-regression-audit-grpo](https://huggingface.co/datasets/rsd-06/pr-regression-audit-grpo) |
 | 🧠 **Trained Model V1 (Adapter)** | [SaiSanjayR/pr-triage-grpo-adapter](https://huggingface.co/SaiSanjayR/pr-triage-grpo-adapter) |

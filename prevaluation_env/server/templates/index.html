@@ -376,15 +376,11 @@
                   Weights & Biases Run Metrics
                 </h3>
                 <div className="wandb-container">
-                  <div className="wandb-graph">
-                    <svg width="32" height="32" fill="none" stroke="var(--color-v2)" strokeWidth="2" viewBox="0 0 24 24" style={{marginBottom: '1rem', opacity: 0.8}}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-                    <div style={{fontWeight: 600, color: '#fff'}}>Train / Reward Curve</div>
-                    <div style={{fontSize: '0.8rem', marginTop: '0.5rem'}}>Awaiting final screenshot from WandB</div>
+                  <div className="wandb-graph" style={{ padding: 0, overflow: 'hidden' }}>
+                    <img src="/assets/train_reward.png" style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="Train Reward Curve" />
                   </div>
-                  <div className="wandb-graph">
-                    <svg width="32" height="32" fill="none" stroke="var(--color-easy)" strokeWidth="2" viewBox="0 0 24 24" style={{marginBottom: '1rem', opacity: 0.8}}><path strokeLinecap="round" strokeLinejoin="round" d="M13 17h8m0 0v-8m0 8l-8-8-4 4-6-6"></path></svg>
-                    <div style={{fontWeight: 600, color: '#fff'}}>Train / Loss Curve</div>
-                    <div style={{fontSize: '0.8rem', marginTop: '0.5rem'}}>Awaiting final screenshot from WandB</div>
+                  <div className="wandb-graph" style={{ padding: 0, overflow: 'hidden' }}>
+                    <img src="/assets/train_loss.png" style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="Train Loss Curve" />
                   </div>
                 </div>
 
@@ -412,6 +408,53 @@
                 <li><strong style={{color: 'var(--color-v2)'}}>V2 (Advanced):</strong> <span style={{opacity: 0.9}}>400 steps. <strong>Dynamic Curriculum</strong> + Anti-Hack Guards. A10G/A100 GPU.</span></li>
               </ul>
             </div>
+          </div>
+
+          {/* ── API ENDPOINTS ───────────────────────────────────────────── */}
+          <div className="section-title"><span>Important API Endpoints</span></div>
+          <div className="card" style={{ marginBottom: '2rem' }}>
+            <p style={{ color: 'var(--text-muted)' }}>The PR Regression Audit environment exposes several key endpoints for integration and monitoring. Here is an example to get started:</p>
+            <div style={{ background: '#111', padding: '1rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-color)', marginBottom: '1.5rem', overflowX: 'auto' }}>
+              <pre style={{ margin: 0, color: '#fff', fontSize: '0.9rem' }}>
+<span style={{ color: 'var(--color-easy)' }}>GET</span> /health
+<span style={{ color: 'var(--text-muted)' }}>Response:</span>
+&#123;
+  <span style={{ color: 'var(--color-v2)' }}>"status"</span>: <span style={{ color: 'var(--color-v1)' }}>"healthy"</span>,
+  <span style={{ color: 'var(--color-v2)' }}>"prs_loaded"</span>: 45
+&#125;
+              </pre>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Endpoint</th>
+                  <th>Method</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style={{ color: 'var(--color-easy)', fontWeight: 600 }}>/step</td>
+                  <td>POST</td>
+                  <td>Submit a <code style={{color:'var(--text-muted)'}}>ReviewAction</code> and receive the observation + reward.</td>
+                </tr>
+                <tr>
+                  <td style={{ color: 'var(--color-easy)', fontWeight: 600 }}>/curriculum</td>
+                  <td>GET</td>
+                  <td>Live curriculum phase and performance stats.</td>
+                </tr>
+                <tr>
+                  <td style={{ color: 'var(--color-easy)', fontWeight: 600 }}>/audit</td>
+                  <td>GET</td>
+                  <td>Recent episode records (useful for the training curve data).</td>
+                </tr>
+                <tr>
+                  <td style={{ color: 'var(--color-easy)', fontWeight: 600 }}>/guards</td>
+                  <td>GET</td>
+                  <td>Guard suite statistics and penalty rate.</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
           {/* ── COMPARISON DASHBOARD ─────────────────────────────────────── */}
